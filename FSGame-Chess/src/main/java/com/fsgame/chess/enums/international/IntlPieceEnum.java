@@ -7,7 +7,7 @@ import com.fsgame.chess.enums.BaseEnum;
  * @Date: 2023/12/4 15:03
  * @Description:
  */
-public enum PieceEnum implements BaseEnum<String> {
+public enum IntlPieceEnum implements BaseEnum<String> {
       K("King", "国王")
     , Q("Queen", "皇后")
     , B("Bishop", "主教")
@@ -20,7 +20,7 @@ public enum PieceEnum implements BaseEnum<String> {
 
     private final String desc;
 
-    PieceEnum(String code, String desc) {
+    IntlPieceEnum(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }

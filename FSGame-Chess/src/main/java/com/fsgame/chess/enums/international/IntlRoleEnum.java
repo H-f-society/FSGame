@@ -7,7 +7,7 @@ import com.fsgame.chess.enums.BaseEnum;
  * @Date: 2023/12/4 17:22
  * @Description:
  */
-public enum RoleEnum implements BaseEnum<String> {
+public enum IntlRoleEnum implements BaseEnum<String> {
       W("white", "白色方")
     , B("black", "黑色方")
     ;
@@ -17,7 +17,7 @@ public enum RoleEnum implements BaseEnum<String> {
 
     private final String desc;
 
-    RoleEnum(String code, String desc) {
+    IntlRoleEnum(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }

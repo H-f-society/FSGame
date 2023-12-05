@@ -7,7 +7,7 @@ import com.fsgame.chess.enums.BaseEnum;
  * @Date: 2023/12/5 9:04
  * @Description:
  */
-public enum BehaviorEnum implements BaseEnum<String> {
+public enum IntlBehaviorEnum implements BaseEnum<String> {
       CAPTURE("吃子")
     , MOVE("走子")
     , CASTLING("王车易位")
@@ -16,7 +16,7 @@ public enum BehaviorEnum implements BaseEnum<String> {
 
     private final String desc;
 
-    BehaviorEnum(String desc) {
+    IntlBehaviorEnum(String desc) {
         this.desc = desc;
     }
 

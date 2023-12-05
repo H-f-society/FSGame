@@ -1,8 +1,8 @@
 package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chesspiece.Piece;
-import com.fsgame.chess.enums.international.PieceEnum;
-import com.fsgame.chess.enums.international.RoleEnum;
+import com.fsgame.chess.enums.international.IntlPieceEnum;
+import com.fsgame.chess.enums.international.IntlRoleEnum;
 
 /**
  * @Author: root
@@ -11,12 +11,12 @@ import com.fsgame.chess.enums.international.RoleEnum;
  */
 public class Knight implements Piece {
     @Override
-    public PieceEnum getType() {
-        return PieceEnum.N;
+    public IntlPieceEnum getType() {
+        return IntlPieceEnum.N;
     }
 
     @Override
-    public RoleEnum getRole() {
+    public IntlRoleEnum getRole() {
         return null;
     }
 

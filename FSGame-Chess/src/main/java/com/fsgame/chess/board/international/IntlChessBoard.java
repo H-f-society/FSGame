@@ -12,13 +12,13 @@ import java.util.LinkedList;
  * @Date: 2023/12/4 15:47
  * @Description:
  */
-public class ChessBoard implements Board {
+public class IntlChessBoard implements Board {
 
     private final Piece[][] board = new Piece[8][8];
 
     private final Deque<WalkingRecords> walkingRecordsStack = new LinkedList<>();
 
-    public ChessBoard() {
+    public IntlChessBoard() {
 
     }
 
