@@ -163,3 +163,5 @@ QFSGame-Chess/src/main/java/com/fsgame/chess/enums/international/IntlRoleEnum.ja
 RFSGame-Chess/src/main/java/com/fsgame/chess/enums/international/IntlPieceEnum.java,f\d\fd896da42f61ea9ae940ec9dfc0bc1a71aff0f04
 ƒ
 SFSGame-Chess/src/main/java/com/fsgame/chess/board/international/IntlChessBoard.java,3\c\3cf4be7138add5c7ec8769620cc3f15a03603a95
+y
+IFSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/AbstractPiece.java,b\d\bd6d56a6d27288fcdc77c612bc46d35195c1a9cf

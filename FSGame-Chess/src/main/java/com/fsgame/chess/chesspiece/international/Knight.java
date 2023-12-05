@@ -1,6 +1,7 @@
 package com.fsgame.chess.chesspiece.international;
 
-import com.fsgame.chess.chesspiece.Piece;
+import com.fsgame.chess.board.Board;
+import com.fsgame.chess.chesspiece.AbstractPiece;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
 import com.fsgame.chess.enums.international.IntlRoleEnum;
 
@@ -9,7 +10,12 @@ import com.fsgame.chess.enums.international.IntlRoleEnum;
  * @Date: 2023/12/4 15:12
  * @Description:
  */
-public class Knight implements Piece {
+public class Knight extends AbstractPiece {
+
+    public Knight(Board board) {
+        super(board);
+    }
+
     @Override
     public IntlPieceEnum getType() {
         return IntlPieceEnum.N;
