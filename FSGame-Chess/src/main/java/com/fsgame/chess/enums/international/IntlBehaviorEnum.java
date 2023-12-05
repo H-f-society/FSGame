@@ -8,8 +8,9 @@ import com.fsgame.chess.enums.BaseEnum;
  * @Description:
  */
 public enum IntlBehaviorEnum implements BaseEnum<String> {
-      CAPTURE("吃子")
-    , MOVE("走子")
+      MOVE("走子")
+    , CAPTURE("吃子")
+    , EN_PASSANT("吃过路兵")
     , CASTLING("王车易位")
     , PROMOTION("升变")
     , NOT_MOVE("未移动")

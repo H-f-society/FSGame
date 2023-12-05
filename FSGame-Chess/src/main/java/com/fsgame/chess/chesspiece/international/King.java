@@ -3,8 +3,8 @@ package com.fsgame.chess.chesspiece.international;
 import com.fsgame.chess.board.Board;
 import com.fsgame.chess.chesspiece.AbstractPiece;
 import com.fsgame.chess.enums.BaseEnum;
+import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
-import com.fsgame.chess.enums.international.IntlRoleEnum;
 
 /**
  * @Author: root
@@ -24,11 +24,20 @@ public class King extends AbstractPiece {
 
     @Override
     public boolean allowMove(int[] coord) {
-        return false;
+        int absX = Math.abs(this.coord[0] - coord[0]);
+        int absY = Math.abs(this.coord[1] - coord[1]);
+        if (Math.abs(absX - absY) > 1) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public BaseEnum move(int[] coord) {
+        if (!super.allowMove(coord) || !allowMove(coord)) {
+            return IntlBehaviorEnum.NOT_MOVE;
+        }
+
         return null;
     }
 

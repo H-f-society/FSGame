@@ -12,7 +12,6 @@ public enum IntlRoleEnum implements BaseEnum<String> {
     , B("black", "黑色方")
     ;
 
-
     private final String code;
 
     private final String desc;

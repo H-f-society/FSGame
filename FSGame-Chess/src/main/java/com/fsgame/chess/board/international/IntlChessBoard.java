@@ -97,9 +97,11 @@ public class IntlChessBoard implements Board {
     @Override
     public boolean move(int[] source, int[] target) {
         Piece piece = board[source[0]][source[1]];
-        if (piece == null || !piece.allowMove(target)) {
+        Piece targetPiece = board[target[0]][target[1]];
+        if (piece == null) {
             return false;
         }
+
         BaseEnum behaviorEnum = piece.move(target);
         if (IntlBehaviorEnum.NOT_MOVE.getCode().equals(behaviorEnum.getCode())) {
             return false;
@@ -108,7 +110,7 @@ public class IntlChessBoard implements Board {
                 .source(source)
                 .target(target)
                 .piece(piece)
-                .behavior(new Behavior(piece, board[target[0]][target[1]], behaviorEnum))
+                .behavior(new Behavior(piece, targetPiece, behaviorEnum))
                 .build();
         walkingRecordsStack.add(walkingRecords);
         return true;

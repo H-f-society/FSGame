@@ -2,7 +2,6 @@ package com.fsgame.chess.chesspiece;
 
 import com.fsgame.chess.board.Board;
 import com.fsgame.chess.enums.BaseEnum;
-import com.fsgame.chess.enums.international.IntlRoleEnum;
 
 /**
  * @Author: root
@@ -25,8 +24,8 @@ public abstract class AbstractPiece implements Piece {
     }
 
     @Override
-    public String toString() {
-        return (String) getType().getCode();
+    public boolean allowMove(int[] coord) {
+        return !(this.coord[0] == coord[0] && this.coord[1] == coord[1]);
     }
 
     @Override
@@ -42,5 +41,14 @@ public abstract class AbstractPiece implements Piece {
     @Override
     public BaseEnum getRole() {
         return roleEnum;
+    }
+
+    @Override
+    public String toString() {
+        return (String) getType().getCode();
+    }
+
+    protected boolean isMyPiece() {
+        return getRole().equals(board.getRoleEnum());
     }
 }
