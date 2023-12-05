@@ -12,8 +12,8 @@ import com.fsgame.chess.enums.international.IntlRoleEnum;
  */
 public class Rook extends AbstractPiece {
 
-    public Rook(Board board) {
-        super(board);
+    public Rook(Board board, int[] coord) {
+        super(board, coord);
     }
 
     @Override
@@ -38,6 +38,11 @@ public class Rook extends AbstractPiece {
 
     @Override
     public boolean allowMove(int[] coord) {
+        return false;
+    }
+
+    @Override
+    public boolean move(int[] coord) {
         return false;
     }
 }

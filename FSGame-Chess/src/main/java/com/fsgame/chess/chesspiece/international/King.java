@@ -12,8 +12,8 @@ import com.fsgame.chess.enums.international.IntlRoleEnum;
  */
 public class King extends AbstractPiece {
 
-    public King(Board board) {
-        super(board);
+    public King(Board board, int[] coord) {
+        super(board, coord);
     }
 
     @Override
@@ -38,6 +38,19 @@ public class King extends AbstractPiece {
 
     @Override
     public boolean allowMove(int[] coord) {
+        return false;
+    }
+
+    @Override
+    public boolean move(int[] coord) {
+        return false;
+    }
+
+    /**
+     * 王车易位
+     * @return
+     */
+    private boolean castling() {
         return false;
     }
 }

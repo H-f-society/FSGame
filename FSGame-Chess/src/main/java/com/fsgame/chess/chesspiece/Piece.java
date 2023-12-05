@@ -18,4 +18,6 @@ public interface Piece {
     int[] initCoord();
 
     boolean allowMove(int[] coord);
+
+    boolean move(int[] coord);
 }

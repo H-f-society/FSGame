@@ -11,7 +11,10 @@ public abstract class AbstractPiece implements Piece {
 
     protected final Board board;
 
-    public AbstractPiece(Board board) {
+    protected final int[] coord;
+
+    public AbstractPiece(Board board, int[] coord) {
         this.board = board;
+        this.coord = coord;
     }
 }
