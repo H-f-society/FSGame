@@ -1,6 +1,7 @@
 package com.fsgame.chess.board;
 
 import com.fsgame.chess.chesspiece.Piece;
+import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.international.BehaviorEnum;
 
 /**
@@ -14,9 +15,9 @@ public class Behavior {
 
     private final Piece target;
 
-    private final BehaviorEnum behaviorEnum;
+    private final BaseEnum behaviorEnum;
 
-    public Behavior(Piece source, Piece target, BehaviorEnum behaviorEnum) {
+    public Behavior(Piece source, Piece target, BaseEnum behaviorEnum) {
         this.source = source;
         this.target = target;
         this.behaviorEnum = behaviorEnum;
@@ -30,7 +31,7 @@ public class Behavior {
         return target;
     }
 
-    public BehaviorEnum getBehaviorEnum() {
+    public BaseEnum getBehaviorEnum() {
         return behaviorEnum;
     }
 
