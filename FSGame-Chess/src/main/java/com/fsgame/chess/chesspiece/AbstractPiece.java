@@ -17,4 +17,9 @@ public abstract class AbstractPiece implements Piece {
         this.board = board;
         this.coord = coord;
     }
+
+    @Override
+    public String toString() {
+        return (String) getType().getCode();
+    }
 }
