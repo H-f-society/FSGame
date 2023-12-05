@@ -40,7 +40,7 @@ public class IntlChessBoard implements Board {
             for (int[] coord : coords) {
 
                 // 使用反射加载类
-                Class<?> clazz = Class.forName("com.fsgame.chess.chesspiece.international." + pieceEnum.getCode());
+                Class<?> clazz = Class.forName(IntlChessUtil.PACKER_PATH + pieceEnum.getCode());
 
                 // 获取带有参数的构造函数
                 Constructor<?> constructor = clazz.getDeclaredConstructor(Board.class, int[].class);

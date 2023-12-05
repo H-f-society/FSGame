@@ -12,6 +12,8 @@ import java.util.Map;
  */
 public class IntlChessUtil {
 
+    public static final String PACKER_PATH = "com.fsgame.chess.chesspiece.international.";
+
     public static final int[][] W_K = new int[][] {{0, 4}};
     public static final int[][] W_Q = new int[][] {{0, 3}};
     public static final int[][] W_B = new int[][] {{0, 2}, {0, 5}};
