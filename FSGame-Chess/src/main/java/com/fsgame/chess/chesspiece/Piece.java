@@ -1,7 +1,6 @@
 package com.fsgame.chess.chesspiece;
 
-import com.fsgame.chess.enums.specific.PieceEnum;
-import com.fsgame.chess.enums.specific.RoleEnum;
+import com.fsgame.chess.enums.BaseEnum;
 
 /**
  * @Author: root
@@ -10,13 +9,11 @@ import com.fsgame.chess.enums.specific.RoleEnum;
  */
 public interface Piece {
 
-    PieceEnum getType();
+    BaseEnum getType();
 
-    RoleEnum getRole();
+    BaseEnum getRole();
 
     int StepCount();
-
-    String getColor();
 
     int[] initCoord();
 

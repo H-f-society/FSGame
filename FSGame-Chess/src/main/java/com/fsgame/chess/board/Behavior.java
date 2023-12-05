@@ -1,7 +1,7 @@
-package com.fsgame.chess.chessboard;
+package com.fsgame.chess.board;
 
 import com.fsgame.chess.chesspiece.Piece;
-import com.fsgame.chess.enums.specific.BehaviorEnum;
+import com.fsgame.chess.enums.international.BehaviorEnum;
 
 /**
  * @Author: root

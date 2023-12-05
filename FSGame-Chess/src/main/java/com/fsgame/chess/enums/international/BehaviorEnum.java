@@ -1,4 +1,4 @@
-package com.fsgame.chess.enums.specific;
+package com.fsgame.chess.enums.international;
 
 import com.fsgame.chess.enums.BaseEnum;
 

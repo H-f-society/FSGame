@@ -1,26 +1,30 @@
-package com.fsgame.chess.enums.specific;
+package com.fsgame.chess.enums.international;
 
 import com.fsgame.chess.enums.BaseEnum;
 
 /**
  * @Author: root
- * @Date: 2023/12/4 17:22
+ * @Date: 2023/12/4 15:03
  * @Description:
  */
-public enum RoleEnum implements BaseEnum<String> {
-      W("white", "白色方")
-    , B("black", "黑色方")
+public enum PieceEnum implements BaseEnum<String> {
+      K("King", "国王")
+    , Q("Queen", "皇后")
+    , B("Bishop", "主教")
+    , N("Knight", "骑士")
+    , R("Rook", "战车")
+    , P("Pawn", "兵卒")
     ;
-
 
     private final String code;
 
     private final String desc;
 
-    RoleEnum(String code, String desc) {
+    PieceEnum(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }
+
     @Override
     public String getCode() {
         return this.code;

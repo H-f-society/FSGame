@@ -1,18 +1,18 @@
-package com.fsgame.chess.chesspiece.specific;
+package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chesspiece.Piece;
-import com.fsgame.chess.enums.specific.PieceEnum;
-import com.fsgame.chess.enums.specific.RoleEnum;
+import com.fsgame.chess.enums.international.PieceEnum;
+import com.fsgame.chess.enums.international.RoleEnum;
 
 /**
  * @Author: root
- * @Date: 2023/12/4 15:11
+ * @Date: 2023/12/4 15:12
  * @Description:
  */
-public class Bishop implements Piece {
+public class Pawn implements Piece {
     @Override
     public PieceEnum getType() {
-        return PieceEnum.B;
+        return PieceEnum.P;
     }
 
     @Override
@@ -23,11 +23,6 @@ public class Bishop implements Piece {
     @Override
     public int StepCount() {
         return 0;
-    }
-
-    @Override
-    public String getColor() {
-        return null;
     }
 
     @Override

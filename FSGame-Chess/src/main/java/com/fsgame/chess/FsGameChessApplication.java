@@ -1,8 +1,5 @@
 package com.fsgame.chess;
 
-import com.fsgame.chess.chessboard.WalkingRecords;
-import com.fsgame.chess.chesspiece.specific.King;
-
 public class FsGameChessApplication {
 
     public static void main(String[] args) {

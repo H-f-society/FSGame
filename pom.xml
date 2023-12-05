@@ -9,8 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <!--<module>FSAlgo-core</module>
-        <module>FSAlgo-case</module>-->
+        <module>FSGame-Chess</module>
     </modules>
 
     <properties>

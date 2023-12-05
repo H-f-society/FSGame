@@ -1,8 +1,8 @@
-package com.fsgame.chess.chesspiece.specific;
+package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chesspiece.Piece;
-import com.fsgame.chess.enums.specific.PieceEnum;
-import com.fsgame.chess.enums.specific.RoleEnum;
+import com.fsgame.chess.enums.international.PieceEnum;
+import com.fsgame.chess.enums.international.RoleEnum;
 
 /**
  * @Author: root
@@ -23,11 +23,6 @@ public class Queen implements Piece {
     @Override
     public int StepCount() {
         return 0;
-    }
-
-    @Override
-    public String getColor() {
-        return null;
     }
 
     @Override

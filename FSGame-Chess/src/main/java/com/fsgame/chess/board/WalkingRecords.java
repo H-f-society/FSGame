@@ -1,4 +1,4 @@
-package com.fsgame.chess.chessboard;
+package com.fsgame.chess.board;
 
 import com.fsgame.chess.chesspiece.Piece;
 

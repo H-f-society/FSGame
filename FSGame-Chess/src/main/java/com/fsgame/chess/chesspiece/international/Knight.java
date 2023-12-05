@@ -1,18 +1,18 @@
-package com.fsgame.chess.chesspiece.specific;
+package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chesspiece.Piece;
-import com.fsgame.chess.enums.specific.PieceEnum;
-import com.fsgame.chess.enums.specific.RoleEnum;
+import com.fsgame.chess.enums.international.PieceEnum;
+import com.fsgame.chess.enums.international.RoleEnum;
 
 /**
  * @Author: root
- * @Date: 2023/12/4 15:01
+ * @Date: 2023/12/4 15:12
  * @Description:
  */
-public class King implements Piece {
+public class Knight implements Piece {
     @Override
     public PieceEnum getType() {
-        return PieceEnum.K;
+        return PieceEnum.N;
     }
 
     @Override
@@ -23,11 +23,6 @@ public class King implements Piece {
     @Override
     public int StepCount() {
         return 0;
-    }
-
-    @Override
-    public String getColor() {
-        return null;
     }
 
     @Override
