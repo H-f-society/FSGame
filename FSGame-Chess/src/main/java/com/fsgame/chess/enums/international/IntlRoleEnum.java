@@ -30,4 +30,9 @@ public enum IntlRoleEnum implements BaseEnum<String> {
     public String getDesc() {
         return this.desc;
     }
+
+    @Override
+    public String getName() {
+        return name();
+    }
 }

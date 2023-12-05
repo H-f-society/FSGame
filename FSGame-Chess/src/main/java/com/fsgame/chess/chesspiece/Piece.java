@@ -11,13 +11,13 @@ public interface Piece {
 
     BaseEnum getType();
 
+    void setRole(BaseEnum roleEnum);
+
     BaseEnum getRole();
 
-    int StepCount();
-
-    int[] initCoord();
+    int getStepCount();
 
     boolean allowMove(int[] coord);
 
-    boolean move(int[] coord);
+    BaseEnum move(int[] coord);
 }

@@ -12,6 +12,7 @@ public enum IntlBehaviorEnum implements BaseEnum<String> {
     , MOVE("走子")
     , CASTLING("王车易位")
     , PROMOTION("升变")
+    , NOT_MOVE("未移动")
     ;
 
     private final String desc;
@@ -28,5 +29,10 @@ public enum IntlBehaviorEnum implements BaseEnum<String> {
     @Override
     public String getDesc() {
         return this.desc;
+    }
+
+    @Override
+    public String getName() {
+        return name();
     }
 }

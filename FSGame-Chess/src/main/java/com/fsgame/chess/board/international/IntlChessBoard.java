@@ -1,9 +1,13 @@
 package com.fsgame.chess.board.international;
 
+import com.fsgame.chess.board.Behavior;
 import com.fsgame.chess.board.Board;
 import com.fsgame.chess.board.WalkingRecords;
 import com.fsgame.chess.chesspiece.Piece;
+import com.fsgame.chess.enums.BaseEnum;
+import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
+import com.fsgame.chess.enums.international.IntlRoleEnum;
 import com.fsgame.chess.utils.IntlChessUtil;
 
 import java.lang.reflect.Constructor;
@@ -19,23 +23,30 @@ import java.util.Map;
  */
 public class IntlChessBoard implements Board {
 
+    private IntlRoleEnum roleEnum;
+
     private final Piece[][] board = new Piece[8][8];
 
     private final Deque<WalkingRecords> walkingRecordsStack = new LinkedList<>();
 
     public IntlChessBoard() {
-        initPiece(IntlChessUtil.getWhitePieceInitCoord());
-        initPiece(IntlChessUtil.getBlackPieceInitCoord());
+        this(IntlRoleEnum.W);
     }
 
-    private void initPiece(Map<IntlPieceEnum, int[][]> coordsMap) {
+    public IntlChessBoard(IntlRoleEnum roleEnum) {
+        this.roleEnum = roleEnum;
+        initPiece(IntlChessUtil.getMySelfPieceInitCoord(), roleEnum);
+        initPiece(IntlChessUtil.getOpponentPieceInitCoord(), IntlRoleEnum.W.equals(roleEnum) ? IntlRoleEnum.B : IntlRoleEnum.W);
+    }
+
+    private void initPiece(Map<IntlPieceEnum, int[][]> coordsMap, IntlRoleEnum roleEnum) {
         for (Map.Entry<IntlPieceEnum, int[][]> entry : coordsMap.entrySet()) {
             IntlPieceEnum pieceEnum = entry.getKey();
-            initPiece(pieceEnum, coordsMap.get(pieceEnum));
+            initPiece(pieceEnum, coordsMap.get(pieceEnum), roleEnum);
         }
     }
 
-    private void initPiece(IntlPieceEnum pieceEnum, int[][] coords) {
+    private void initPiece(IntlPieceEnum pieceEnum, int[][] coords, IntlRoleEnum roleEnum) {
         try {
             for (int[] coord : coords) {
 
@@ -47,6 +58,7 @@ public class IntlChessBoard implements Board {
 
                 // 使用反射创建类的实例并传递参数
                 Piece piece = (Piece) constructor.newInstance(this, coord);
+                piece.setRole(roleEnum);
 
                 updateBoard(coord[0], coord[1], piece);
             }
@@ -55,6 +67,11 @@ public class IntlChessBoard implements Board {
                  InvocationTargetException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public BaseEnum<String> getRoleEnum() {
+        return roleEnum;
     }
 
     @Override
@@ -75,5 +92,25 @@ public class IntlChessBoard implements Board {
     @Override
     public Deque<WalkingRecords> getRecords() {
         return walkingRecordsStack;
+    }
+
+    @Override
+    public boolean move(int[] source, int[] target) {
+        Piece piece = board[source[0]][source[1]];
+        if (piece == null || !piece.allowMove(target)) {
+            return false;
+        }
+        BaseEnum behaviorEnum = piece.move(target);
+        if (IntlBehaviorEnum.NOT_MOVE.getCode().equals(behaviorEnum.getCode())) {
+            return false;
+        }
+        WalkingRecords walkingRecords = new WalkingRecords.Builder()
+                .source(source)
+                .target(target)
+                .piece(piece)
+                .behavior(new Behavior(piece, board[target[0]][target[1]], behaviorEnum))
+                .build();
+        walkingRecordsStack.add(walkingRecords);
+        return true;
     }
 }

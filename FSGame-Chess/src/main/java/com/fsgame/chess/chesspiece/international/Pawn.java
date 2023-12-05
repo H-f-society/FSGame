@@ -2,6 +2,8 @@ package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.board.Board;
 import com.fsgame.chess.chesspiece.AbstractPiece;
+import com.fsgame.chess.enums.BaseEnum;
+import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
 import com.fsgame.chess.enums.international.IntlRoleEnum;
 
@@ -22,27 +24,15 @@ public class Pawn extends AbstractPiece {
     }
 
     @Override
-    public IntlRoleEnum getRole() {
-        return null;
-    }
-
-    @Override
-    public int StepCount() {
-        return 0;
-    }
-
-    @Override
-    public int[] initCoord() {
-        return new int[0];
-    }
-
-    @Override
     public boolean allowMove(int[] coord) {
-        return false;
+        return true;
     }
 
     @Override
-    public boolean move(int[] coord) {
-        return false;
+    public BaseEnum move(int[] coord) {
+        board.updateBoard(this.coord[0], this.coord[1], null);
+        board.updateBoard(coord[0], coord[1], this);
+        stepCount++;
+        return IntlBehaviorEnum.MOVE;
     }
 }

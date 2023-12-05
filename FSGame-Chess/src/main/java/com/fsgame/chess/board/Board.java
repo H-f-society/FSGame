@@ -1,6 +1,7 @@
 package com.fsgame.chess.board;
 
 import com.fsgame.chess.chesspiece.Piece;
+import com.fsgame.chess.enums.BaseEnum;
 
 import java.util.Deque;
 
@@ -11,6 +12,8 @@ import java.util.Deque;
  */
 public interface Board {
 
+    BaseEnum<String> getRoleEnum();
+
     void updateBoard(int x, int y, Piece piece);
 
     Piece[][] getBoard();
@@ -18,4 +21,6 @@ public interface Board {
     void addRecords(WalkingRecords walkingRecords);
 
     Deque<WalkingRecords> getRecords();
+
+    boolean move(int[] source, int[] target);
 }

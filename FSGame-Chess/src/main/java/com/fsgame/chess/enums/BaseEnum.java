@@ -10,4 +10,6 @@ public interface BaseEnum<T> {
     T getCode();
 
     String getDesc();
+
+    String getName();
 }
