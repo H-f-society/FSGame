@@ -9,7 +9,7 @@ import com.fsgame.chess.board.Board;
  */
 public abstract class AbstractPiece implements Piece {
 
-    private final Board board;
+    protected final Board board;
 
     public AbstractPiece(Board board) {
         this.board = board;
