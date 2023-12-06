@@ -107,7 +107,7 @@ public class IntlChessBoard implements Board {
             return false;
         }
 
-        BaseEnum behaviorEnum = piece.move(target);
+        BaseEnum<?> behaviorEnum = piece.move(target);
         if (IntlBehaviorEnum.NOT_MOVE.equals(behaviorEnum)) {
             return false;
         }

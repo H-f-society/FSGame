@@ -12,7 +12,7 @@ import java.util.Deque;
  */
 public interface Board {
 
-    BaseEnum<String> getRoleEnum();
+    BaseEnum getRoleEnum();
 
     void updateBoard(int[] coord, Piece piece);
 
