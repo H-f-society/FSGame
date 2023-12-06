@@ -38,7 +38,13 @@ public abstract class AbstractPiece implements Piece {
 
     @Override
     public boolean allowMove(int[] coord) {
-        return !(this.coord[0] == coord[0] && this.coord[1] == coord[1]);
+        int x = coord[0];
+        int y = coord[1];
+        // 是否越界
+        if (x < 0 || x > board.getBoard().length || y < 0 || y > board.getBoard()[0].length) {
+            return false;
+        }
+        return !(this.coord[0] == x && this.coord[1] == y);
     }
 
     @Override
