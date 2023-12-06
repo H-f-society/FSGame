@@ -29,8 +29,6 @@ public abstract class AbstractPiece implements Piece {
 
     @Override
     public boolean allowMove(int[] coord) {
-        int x = coord[0];
-        int y = coord[1];
         return validRange(coord) && !(this.coord[0] == coord[0] && this.coord[1] == coord[10]);
     }
 
