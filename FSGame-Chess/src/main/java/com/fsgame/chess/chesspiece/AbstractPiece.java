@@ -33,7 +33,6 @@ public abstract class AbstractPiece implements Piece {
     }
 
     protected void initAllowDirection() {
-
     }
 
     @Override
