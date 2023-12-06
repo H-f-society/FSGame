@@ -26,14 +26,4 @@ public class Bishop extends AbstractIntlChessPiece {
     public IntlPieceEnum getType() {
         return IntlPieceEnum.B;
     }
-
-    @Override
-    public boolean allowMove(int[] coord) {
-        return false;
-    }
-
-    @Override
-    public BaseEnum move(int[] coord) {
-        return null;
-    }
 }

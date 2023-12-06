@@ -30,21 +30,4 @@ public class Pawn extends AbstractIntlChessPiece {
     public IntlPieceEnum getType() {
         return IntlPieceEnum.P;
     }
-
-    @Override
-    public boolean allowMove(int[] coord) {
-        DirectionEnum dire = DirectionUtil.calcDirection(this.coord, coord);
-        return allowDirectionSet.contains(dire);
-    }
-
-    @Override
-    public BaseEnum move(int[] coord) {
-        if (!super.allowMove(coord) || !this.allowMove(coord)) {
-            return IntlBehaviorEnum.NOT_MOVE;
-        }
-        board.updateBoard(this.coord[0], this.coord[1], null);
-        board.updateBoard(coord[0], coord[1], this);
-        stepCount++;
-        return IntlBehaviorEnum.MOVE;
-    }
 }

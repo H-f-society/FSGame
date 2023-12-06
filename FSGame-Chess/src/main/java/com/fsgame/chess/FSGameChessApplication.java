@@ -11,7 +11,7 @@ public class FSGameChessApplication {
 
         testInitChessBoard(IntlRoleEnum.W);
 
-        testInitChessBoard(IntlRoleEnum.B);
+        // testInitChessBoard(IntlRoleEnum.B);
     }
 
     public static void testInitChessBoard(IntlRoleEnum intlRoleEnum) {
@@ -19,9 +19,11 @@ public class FSGameChessApplication {
 
         System.out.println(board.getRoleEnum().getDesc());
 
-        board.move(new int[]{6, 1}, new int[]{5, 1});
-        board.move(new int[]{6, 2}, new int[]{4, 3});
-        board.move(new int[]{7, 1}, new int[]{5, 0});
+        // board.move(new int[]{6, 1}, new int[]{5, 1});
+        // board.move(new int[]{6, 2}, new int[]{4, 3});
+        // board.move(new int[]{7, 1}, new int[]{5, 0});
+        board.move(new int[]{6, 3}, new int[]{5, 4});
+        board.move(new int[]{7, 3}, new int[]{3, 3});
 
         for (Piece[] row : board.getBoard()) {
             for (Piece piece : row) {
@@ -30,6 +32,5 @@ public class FSGameChessApplication {
             }
             System.out.println();
         }
-        System.out.println();
     }
 }

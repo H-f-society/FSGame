@@ -26,14 +26,4 @@ public class Knight extends AbstractIntlChessPiece {
     public IntlPieceEnum getType() {
         return IntlPieceEnum.N;
     }
-
-    @Override
-    public boolean allowMove(int[] coord) {
-        return false;
-    }
-
-    @Override
-    public BaseEnum move(int[] coord) {
-        return null;
-    }
 }

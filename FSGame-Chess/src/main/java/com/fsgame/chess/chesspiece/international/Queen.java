@@ -26,14 +26,4 @@ public class Queen extends AbstractIntlChessPiece {
     public IntlPieceEnum getType() {
         return IntlPieceEnum.Q;
     }
-
-    @Override
-    public boolean allowMove(int[] coord) {
-        return false;
-    }
-
-    @Override
-    public BaseEnum move(int[] coord) {
-        return null;
-    }
 }
