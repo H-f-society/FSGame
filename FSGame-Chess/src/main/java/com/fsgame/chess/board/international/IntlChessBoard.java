@@ -108,7 +108,7 @@ public class IntlChessBoard implements Board {
         }
 
         BaseEnum behaviorEnum = piece.move(target);
-        if (IntlBehaviorEnum.NOT_MOVE.getCode().equals(behaviorEnum.getCode())) {
+        if (IntlBehaviorEnum.NOT_MOVE.equals(behaviorEnum)) {
             return false;
         }
         WalkingRecords walkingRecords = new WalkingRecords.Builder()

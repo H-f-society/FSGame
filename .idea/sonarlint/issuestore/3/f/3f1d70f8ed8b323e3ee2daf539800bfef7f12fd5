@@ -3,5 +3,7 @@ c
 java:S1126%"AReplace this if-then-else statement by a single return statement.(÷õıøÿÿÿÿ8¨ æÉÃ1
 U
 java:S34009"9Remove this method and declare a constant for this value.(¸®Ã'8åÉÃ1
+c
+java:S1128"ARemove this unused import 'com.fsgame.chess.enums.DirectionEnum'.(ºÏôçıÿÿÿÿ8Îì¤ôÃ1
 I
 java:S11448"-Remove this unused private "castling" method.(€”ï`8åÉÃ1
