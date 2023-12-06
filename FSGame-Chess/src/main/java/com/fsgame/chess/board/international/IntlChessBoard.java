@@ -35,8 +35,8 @@ public class IntlChessBoard implements Board {
 
     public IntlChessBoard(IntlRoleEnum roleEnum) {
         this.roleEnum = roleEnum;
-        initPiece(IntlChessUtil.getMySelfPieceInitCoord(), roleEnum);
-        initPiece(IntlChessUtil.getOpponentPieceInitCoord(), IntlRoleEnum.W.equals(roleEnum) ? IntlRoleEnum.B : IntlRoleEnum.W);
+        initPiece(IntlChessUtil.getMySelfPieceInitCoord(roleEnum), roleEnum);
+        initPiece(IntlChessUtil.getOpponentPieceInitCoord(roleEnum), IntlRoleEnum.W.equals(roleEnum) ? IntlRoleEnum.B : IntlRoleEnum.W);
     }
 
     private void initPiece(Map<IntlPieceEnum, int[][]> coordsMap, IntlRoleEnum roleEnum) {

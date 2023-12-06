@@ -113,3 +113,5 @@ t
 DFSGame-Chess/src/main/java/com/fsgame/chess/enums/DirectionEnum.java,e\6\e65d5c4ea64a7a42c1d3794bdaf61f24fed3de5a
 t
 DFSGame-Chess/src/main/java/com/fsgame/chess/utils/DirectionUtil.java,4\a\4a1254ceebb3a63719a938958ad25c1bdfa540cc
+w
+GFSGame-Chess/src/main/java/com/fsgame/chess/FSGameChessApplication.java,5\1\516199d3e0ddc8fb6a28c9d1c348dc5f890a123f

@@ -3,12 +3,19 @@ package com.fsgame.chess;
 import com.fsgame.chess.board.Board;
 import com.fsgame.chess.board.international.IntlChessBoard;
 import com.fsgame.chess.chesspiece.Piece;
-// @SpringBootApplication
+import com.fsgame.chess.enums.international.IntlRoleEnum;
+
 public class FSGameChessApplication {
 
     public static void main(String[] args) {
 
-        Board board = new IntlChessBoard();
+        testInitChessBoard(IntlRoleEnum.W);
+
+        testInitChessBoard(IntlRoleEnum.B);
+    }
+
+    public static void testInitChessBoard(IntlRoleEnum intlRoleEnum) {
+        Board board = new IntlChessBoard(intlRoleEnum);
 
         System.out.println(board.getRoleEnum().getDesc());
 
@@ -23,5 +30,6 @@ public class FSGameChessApplication {
             }
             System.out.println();
         }
+        System.out.println();
     }
 }
