@@ -22,17 +22,9 @@ public abstract class AbstractPiece implements Piece {
 
     protected int stepCount;
 
-    protected int allowMaxStep;
-
-    protected Set<DirectionEnum> allowDirectionSet;
-
     public AbstractPiece(Board board, int[] coord) {
         this.board = board;
         this.coord = coord;
-        allowDirectionSet = new HashSet<>();
-    }
-
-    protected void initAllowDirection() {
     }
 
     @Override
@@ -49,7 +41,6 @@ public abstract class AbstractPiece implements Piece {
     @Override
     public void setRole(BaseEnum roleEnum) {
         this.roleEnum = roleEnum;
-        initAllowDirection();
     }
 
     @Override

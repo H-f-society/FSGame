@@ -1,7 +1,6 @@
 package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.board.Board;
-import com.fsgame.chess.chesspiece.AbstractPiece;
 import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.DirectionEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
@@ -11,7 +10,7 @@ import com.fsgame.chess.enums.international.IntlPieceEnum;
  * @Date: 2023/12/4 15:12
  * @Description:
  */
-public class Knight extends AbstractPiece {
+public class Knight extends AbstractIntlChessPiece {
 
     public Knight(Board board, int[] coord) {
         super(board, coord);
