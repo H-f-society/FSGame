@@ -21,8 +21,8 @@ public class IntlChessUtil {
     public static final int[][] OPPONENT_R = new int[][] {{0, 0}, {0, 7}};
     public static final int[][] OPPONENT_P = new int[][] {{1, 0}, {1, 1}, {1, 2}, {1, 3}, {1, 4}, {1, 5}, {1, 6}, {1, 7}};
 
-    public static final int[][] MYSELF_K = new int[][] {{7, 3}};
-    public static final int[][] MYSELF_Q = new int[][] {{7, 4}};
+    public static final int[][] MYSELF_K = new int[][] {{7, 4}};
+    public static final int[][] MYSELF_Q = new int[][] {{7, 3}};
     public static final int[][] MYSELF_B = new int[][] {{7, 2}, {7, 5}};
     public static final int[][] MYSELF_N = new int[][] {{7, 1}, {7, 6}};
     public static final int[][] MYSELF_R = new int[][] {{7, 0}, {7, 7}};
