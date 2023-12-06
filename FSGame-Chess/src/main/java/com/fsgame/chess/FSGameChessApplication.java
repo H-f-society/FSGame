@@ -4,7 +4,7 @@ import com.fsgame.chess.board.Board;
 import com.fsgame.chess.board.international.IntlChessBoard;
 import com.fsgame.chess.chesspiece.Piece;
 // @SpringBootApplication
-public class FsGameChessApplication {
+public class FSGameChessApplication {
 
     public static void main(String[] args) {
 
