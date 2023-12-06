@@ -3,15 +3,10 @@ package com.fsgame.chess;
 import com.fsgame.chess.board.Board;
 import com.fsgame.chess.board.international.IntlChessBoard;
 import com.fsgame.chess.chesspiece.Piece;
-import com.fsgame.chess.enums.international.IntlRoleEnum;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
+// @SpringBootApplication
 public class FsGameChessApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FsGameChessApplication.class, args);
 
         Board board = new IntlChessBoard();
 

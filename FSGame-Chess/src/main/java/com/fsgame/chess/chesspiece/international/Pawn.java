@@ -17,14 +17,14 @@ public class Pawn extends AbstractPiece {
 
     public Pawn(Board board, int[] coord) {
         super(board, coord);
-        initAllowDirection();
     }
 
     @Override
     public void initAllowDirection() {
-        allowDirectionSet.add(DirectionEnum.UP);
-        allowDirectionSet.add(DirectionEnum.LEFT_UP);
-        allowDirectionSet.add(DirectionEnum.RIGHT_UP);
+        allowDirectionSet.clear();
+        allowDirectionSet.add(isMyPiece() ? DirectionEnum.UP : DirectionEnum.DOWN);
+        allowDirectionSet.add(isMyPiece() ? DirectionEnum.LEFT_UP : DirectionEnum.LEFT_DOWN);
+        allowDirectionSet.add(isMyPiece() ? DirectionEnum.RIGHT_UP : DirectionEnum.RIGHT_DOWN);
     }
 
     @Override

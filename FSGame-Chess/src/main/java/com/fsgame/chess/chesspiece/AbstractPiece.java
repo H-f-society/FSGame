@@ -44,6 +44,7 @@ public abstract class AbstractPiece implements Piece {
     @Override
     public void setRole(BaseEnum roleEnum) {
         this.roleEnum = roleEnum;
+        initAllowDirection();
     }
 
     @Override
