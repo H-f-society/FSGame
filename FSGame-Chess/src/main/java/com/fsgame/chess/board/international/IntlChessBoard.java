@@ -75,6 +75,11 @@ public class IntlChessBoard implements Board {
     }
 
     @Override
+    public void updateBoard(int[] coord, Piece piece) {
+        updateBoard(coord[0], coord[1], piece);
+    }
+
+    @Override
     public void updateBoard(int x, int y, Piece piece) {
         board[x][y] = piece;
     }

@@ -14,6 +14,8 @@ public interface Board {
 
     BaseEnum<String> getRoleEnum();
 
+    void updateBoard(int[] coord, Piece piece);
+
     void updateBoard(int x, int y, Piece piece);
 
     Piece[][] getBoard();
