@@ -2,10 +2,6 @@ package com.fsgame.chess.chesspiece;
 
 import com.fsgame.chess.board.Board;
 import com.fsgame.chess.enums.BaseEnum;
-import com.fsgame.chess.enums.DirectionEnum;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @Author: root
