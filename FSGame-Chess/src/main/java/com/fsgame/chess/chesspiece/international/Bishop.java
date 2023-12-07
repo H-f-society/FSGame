@@ -16,7 +16,7 @@ public class Bishop extends AbstractIntlChessPiece {
     }
 
     @Override
-    public void initAllowDirection() {
+    protected void initAllowDirection() {
         allowDirectionSet.clear();
         DirectionUtil.diagonalLineDire(allowDirectionSet);
     }

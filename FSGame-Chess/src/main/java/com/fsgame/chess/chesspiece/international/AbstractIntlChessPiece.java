@@ -3,13 +3,14 @@ package com.fsgame.chess.chesspiece.international;
 import com.fsgame.chess.chessboard.Board;
 import com.fsgame.chess.chesspiece.AbstractPiece;
 import com.fsgame.chess.chesspiece.Piece;
+import com.fsgame.chess.chesspiece.PieceMove;
+import com.fsgame.chess.chesspiece.international.movespecific.Capture;
 import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.DirectionEnum;
 import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.utils.DirectionUtil;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Author: root
@@ -20,11 +21,18 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
 
     protected Set<DirectionEnum> allowDirectionSet = new HashSet<>();
 
+    protected List<PieceMove> allowMoveBehaviorList = new LinkedList<>();
+
     public AbstractIntlChessPiece(Board board, int[] coord) {
         super(board, coord);
+        initAllowMoveBehavior();
     }
 
     protected abstract void initAllowDirection();
+
+    protected void initAllowMoveBehavior() {
+        allowMoveBehaviorList.add(new Capture());
+    }
 
     @Override
     public void updateCoord(int[] coord) {
@@ -56,7 +64,7 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
     }
 
     @Override
-    public BaseEnum<String> move(int[] coord) {
+    public BaseEnum move(int[] coord) {
         if (!super.allowMove(coord) || !this.allowMove(coord)) {
             return IntlBehaviorEnum.NOT_MOVE;
         }

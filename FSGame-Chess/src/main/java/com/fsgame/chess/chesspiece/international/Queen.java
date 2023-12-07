@@ -16,7 +16,7 @@ public class Queen extends AbstractIntlChessPiece {
     }
 
     @Override
-    public void initAllowDirection() {
+    protected void initAllowDirection() {
         allowDirectionSet.clear();
         DirectionUtil.allDirection(allowDirectionSet);
     }

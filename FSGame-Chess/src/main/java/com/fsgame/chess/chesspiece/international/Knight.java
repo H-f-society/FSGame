@@ -16,7 +16,7 @@ public class Knight extends AbstractIntlChessPiece {
     }
 
     @Override
-    public void initAllowDirection() {
+    protected void initAllowDirection() {
         allowDirectionSet.clear();
         allowDirectionSet.add(DirectionEnum.SPECIFIED);
     }

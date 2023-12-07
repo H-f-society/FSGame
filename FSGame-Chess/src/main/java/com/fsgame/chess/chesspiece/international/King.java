@@ -1,6 +1,10 @@
 package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chessboard.Board;
+import com.fsgame.chess.chesspiece.international.movespecific.Castline;
+import com.fsgame.chess.chesspiece.international.movespecific.EnPassnt;
+import com.fsgame.chess.chesspiece.international.movespecific.PawnCature;
+import com.fsgame.chess.chesspiece.international.movespecific.Promotion;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
 import com.fsgame.chess.utils.DirectionUtil;
 
@@ -16,9 +20,15 @@ public class King extends AbstractIntlChessPiece {
     }
 
     @Override
-    public void initAllowDirection() {
+    protected void initAllowDirection() {
         allowDirectionSet.clear();
         DirectionUtil.allDirection(allowDirectionSet);
+    }
+
+    @Override
+    protected void initAllowMoveBehavior() {
+        super.initAllowMoveBehavior();
+        allowMoveBehaviorList.add(new Castline());
     }
 
     @Override

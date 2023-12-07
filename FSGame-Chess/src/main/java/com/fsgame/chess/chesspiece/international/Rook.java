@@ -16,7 +16,7 @@ public class Rook extends AbstractIntlChessPiece {
     }
 
     @Override
-    public void initAllowDirection() {
+    protected void initAllowDirection() {
         allowDirectionSet.clear();
         DirectionUtil.straightLineDire(allowDirectionSet);
     }
