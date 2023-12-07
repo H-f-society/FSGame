@@ -9,7 +9,7 @@ import com.fsgame.chess.enums.international.IntlBehaviorEnum;
  * @Date: 2023/12/7 20:14
  * @Description:
  */
-public class Capture extends AbstractPieceMove {
+public class Capture extends AbstractIntlPieceMove {
 
     protected static final IntlBehaviorEnum MOVE_BEHAVIOR = IntlBehaviorEnum.CAPTURE;
 

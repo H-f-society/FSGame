@@ -9,7 +9,7 @@ import com.fsgame.chess.enums.international.IntlBehaviorEnum;
  * @Date: 2023/12/7 21:01
  * @Description:
  */
-public class EnPassnt extends AbstractPieceMove {
+public class EnPassnt extends AbstractIntlPieceMove {
 
     private static final IntlBehaviorEnum MOVE_BEHAVIOR = IntlBehaviorEnum.EN_PASSANT;
 

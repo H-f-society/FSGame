@@ -9,7 +9,7 @@ import com.fsgame.chess.enums.international.IntlBehaviorEnum;
  * @Date: 2023/12/7 20:57
  * @Description:
  */
-public class Castline extends AbstractPieceMove{
+public class Castline extends AbstractIntlPieceMove {
 
     private static final IntlBehaviorEnum MOVE_BEHAVIOR = IntlBehaviorEnum.CASTLING;
 
