@@ -1,8 +1,8 @@
-package com.fsgame.chess.board.international;
+package com.fsgame.chess.chessboard.international;
 
-import com.fsgame.chess.board.Behavior;
-import com.fsgame.chess.board.Board;
-import com.fsgame.chess.board.WalkingRecords;
+import com.fsgame.chess.chessboard.Behavior;
+import com.fsgame.chess.chessboard.Board;
+import com.fsgame.chess.chessboard.WalkingRecords;
 import com.fsgame.chess.chesspiece.Piece;
 import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.international.IntlBehaviorEnum;

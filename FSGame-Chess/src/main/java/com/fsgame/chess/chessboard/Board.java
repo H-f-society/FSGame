@@ -1,4 +1,4 @@
-package com.fsgame.chess.board;
+package com.fsgame.chess.chessboard;
 
 import com.fsgame.chess.chesspiece.Piece;
 import com.fsgame.chess.enums.BaseEnum;

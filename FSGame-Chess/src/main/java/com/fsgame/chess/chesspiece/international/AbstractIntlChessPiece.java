@@ -1,6 +1,6 @@
 package com.fsgame.chess.chesspiece.international;
 
-import com.fsgame.chess.board.Board;
+import com.fsgame.chess.chessboard.Board;
 import com.fsgame.chess.chesspiece.AbstractPiece;
 import com.fsgame.chess.chesspiece.Piece;
 import com.fsgame.chess.enums.BaseEnum;

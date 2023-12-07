@@ -1,7 +1,7 @@
 package com.fsgame.chess;
 
-import com.fsgame.chess.board.Board;
-import com.fsgame.chess.board.international.IntlChessBoard;
+import com.fsgame.chess.chessboard.Board;
+import com.fsgame.chess.chessboard.international.IntlChessBoard;
 import com.fsgame.chess.enums.international.IntlRoleEnum;
 
 public class FSGameChessApplication {
