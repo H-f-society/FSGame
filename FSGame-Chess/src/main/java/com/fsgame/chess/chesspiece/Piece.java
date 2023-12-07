@@ -9,6 +9,10 @@ import com.fsgame.chess.enums.BaseEnum;
  */
 public interface Piece {
 
+    void updateCoord(int[] coord);
+
+    void updateCoord(int x, int y);
+
     BaseEnum getType();
 
     void setRole(BaseEnum roleEnum);

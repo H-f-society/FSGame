@@ -26,6 +26,16 @@ public class King extends AbstractIntlChessPiece {
         return IntlPieceEnum.K;
     }
 
+    @Override
+    public boolean allowMove(int[] coord) {
+        int absX = Math.abs(this.coord[0] - coord[0]);
+        int absY = Math.abs(this.coord[1] - coord[1]);
+        if (Math.abs(absX - absY) > 1) {
+            return false;
+        }
+        return super.allowMove(coord);
+    }
+
     /**
      * 王车易位
      * @return

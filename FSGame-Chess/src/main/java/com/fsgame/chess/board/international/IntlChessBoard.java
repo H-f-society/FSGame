@@ -75,6 +75,16 @@ public class IntlChessBoard implements Board {
     }
 
     @Override
+    public Piece getPiece(int[] coord) {
+        return getPiece(coord[0], coord[1]);
+    }
+
+    @Override
+    public Piece getPiece(int x, int y) {
+        return board[x][y];
+    }
+
+    @Override
     public void updateBoard(int[] coord, Piece piece) {
         updateBoard(coord[0], coord[1], piece);
     }
@@ -111,6 +121,7 @@ public class IntlChessBoard implements Board {
         if (IntlBehaviorEnum.NOT_MOVE.equals(behaviorEnum)) {
             return false;
         }
+        piece.updateCoord(target);
         WalkingRecords walkingRecords = new WalkingRecords.Builder()
                 .source(source)
                 .target(target)
@@ -119,5 +130,32 @@ public class IntlChessBoard implements Board {
                 .build();
         walkingRecordsStack.add(walkingRecords);
         return true;
+    }
+
+    @Override
+    public int rows() {
+        return board.length;
+    }
+
+    @Override
+    public int columns() {
+        return rows() != 0 ? board[0].length : 0;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(getRoleEnum().getDesc()).append("\n");
+
+        for (Piece[] pieces : getBoard()) {
+            for (Piece piece : pieces) {
+                sb.append(piece != null ? piece.getRole().getName() + "." + piece.getType().getName() : "---")
+                        .append(" ");
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
     }
 }

@@ -28,6 +28,17 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
     protected abstract void initAllowDirection();
 
     @Override
+    public void updateCoord(int[] coord) {
+        updateCoord(coord[0], coord[1]);
+    }
+
+    @Override
+    public void updateCoord(int x, int y) {
+        this.coord[0] = x;
+        this.coord[1] = y;
+    }
+
+    @Override
     public void setRole(BaseEnum roleEnum) {
         super.setRole(roleEnum);
         initAllowDirection();
@@ -72,7 +83,7 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
         while(validRange(tempX, tempY) && tempX != x && tempY != y) {
             tempX += direX;
             tempY += direY;
-            if (board.getBoard()[tempX][tempY] != null) {
+            if (board.getPiece(tempX, tempY) != null) {
                 return false;
             }
         }

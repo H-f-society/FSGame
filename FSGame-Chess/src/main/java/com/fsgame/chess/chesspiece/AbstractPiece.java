@@ -57,6 +57,6 @@ public abstract class AbstractPiece implements Piece {
     }
 
     protected boolean validRange(int x, int y) {
-        return x > 0 && y > 0 && x < board.getBoard().length && y < board.getBoard()[0].length;
+        return x >= 0 && y >= 0 && x < board.rows() && y < board.columns();
     }
 }

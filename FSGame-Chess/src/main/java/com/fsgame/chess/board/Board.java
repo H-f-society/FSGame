@@ -14,6 +14,10 @@ public interface Board {
 
     BaseEnum getRoleEnum();
 
+    Piece getPiece(int[] coord);
+
+    Piece getPiece(int x, int y);
+
     void updateBoard(int[] coord, Piece piece);
 
     void updateBoard(int x, int y, Piece piece);
@@ -25,4 +29,8 @@ public interface Board {
     Deque<WalkingRecords> getRecords();
 
     boolean move(int[] source, int[] target);
+
+    int rows();
+
+    int columns();
 }
