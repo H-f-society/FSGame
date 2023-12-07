@@ -13,7 +13,7 @@ public class FSGameChessApplication {
         board.move(new int[]{6, 3}, new int[]{5, 4});
         board.move(new int[]{6, 2}, new int[]{4, 2});
         board.move(new int[]{7, 3}, new int[]{6, 2});
-        board.move(new int[]{6, 2}, new int[]{5, 1});
+        // board.move(new int[]{6, 2}, new int[]{5, 1});
 
         System.out.println(board);
 

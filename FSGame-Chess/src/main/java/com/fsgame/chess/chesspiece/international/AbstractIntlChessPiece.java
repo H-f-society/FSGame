@@ -2,6 +2,7 @@ package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.board.Board;
 import com.fsgame.chess.chesspiece.AbstractPiece;
+import com.fsgame.chess.chesspiece.Piece;
 import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.DirectionEnum;
 import com.fsgame.chess.enums.international.IntlBehaviorEnum;
@@ -44,6 +45,11 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
 
     @Override
     public boolean allowMove(int[] coord) {
+        // 如果目标格子上的棋子和当前格子上的棋子为同一色，不允许移动
+        Piece targetPiece = board.getPiece(coord);
+        if (targetPiece != null && getRole().equals(targetPiece.getRole())) {
+            return false;
+        }
         DirectionEnum dire = DirectionUtil.calcDirection(this.coord, coord);
         // 如果目标点在可允许的移动方向上，并且路途上无障碍，允许移动
         return allowDirectionSet.contains(dire) && unimpededRoute(coord);
@@ -75,9 +81,12 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
 
         int tempX = this.coord[0];
         int tempY = this.coord[1];
-        while(validRange(tempX, tempY) && tempX != x && tempY != y) {
+        while(validRange(tempX, tempY)) {
             tempX += direX;
             tempY += direY;
+            if (tempX == x && tempY == y) {
+                break;
+            }
             if (board.getPiece(tempX, tempY) != null) {
                 return false;
             }

@@ -27,4 +27,13 @@ public class Pawn extends AbstractIntlChessPiece {
     public IntlPieceEnum getType() {
         return IntlPieceEnum.P;
     }
+
+    @Override
+    public boolean allowMove(int[] coord) {
+        if ((stepCount == 0 && stepNum(coord) > 2) || (stepCount > 0 && stepNum(coord) > 1)) {
+            return false;
+        }
+        super.allowMove(coord);
+        return true;
+    }
 }
