@@ -8,12 +8,12 @@ public class FSGameChessApplication {
 
     public static void main(String[] args) {
 
-        Board board = new IntlChessBoard(IntlRoleEnum.W);
+        Board board = new IntlChessBoard(IntlRoleEnum.B);
 
         board.move(new int[]{6, 3}, new int[]{5, 4});
         board.move(new int[]{6, 2}, new int[]{4, 2});
         board.move(new int[]{7, 3}, new int[]{6, 2});
-        board.move(new int[]{6, 2}, new int[]{4, 0});
+        board.move(new int[]{6, 2}, new int[]{5, 1});
 
         System.out.println(board);
 

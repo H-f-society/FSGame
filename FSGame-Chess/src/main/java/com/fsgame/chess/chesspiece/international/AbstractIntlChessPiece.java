@@ -17,8 +17,6 @@ import java.util.Set;
  */
 public abstract class AbstractIntlChessPiece extends AbstractPiece {
 
-    protected int allowMaxStep;
-
     protected Set<DirectionEnum> allowDirectionSet = new HashSet<>();
 
     public AbstractIntlChessPiece(Board board, int[] coord) {
@@ -48,14 +46,11 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
     public boolean allowMove(int[] coord) {
         DirectionEnum dire = DirectionUtil.calcDirection(this.coord, coord);
         // 如果目标点在可允许的移动方向上，并且路途上无障碍，允许移动
-        if (allowDirectionSet.contains(dire) && unimpededRoute(coord)) {
-            return true;
-        }
-        return false;
+        return allowDirectionSet.contains(dire) && unimpededRoute(coord);
     }
 
     @Override
-    public BaseEnum move(int[] coord) {
+    public BaseEnum<String> move(int[] coord) {
         if (!super.allowMove(coord) || !this.allowMove(coord)) {
             return IntlBehaviorEnum.NOT_MOVE;
         }
@@ -88,6 +83,23 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
             }
         }
         return true;
+    }
+
+    protected int stepNum(int[] coord) {
+        return stepNum(coord[0], coord[1]);
+    }
+
+    // 间隔步数（格子）
+    protected int stepNum(int x, int y) {
+        int absX = Math.abs(this.coord[0] - x);
+        int absY = Math.abs(this.coord[1] - y);
+        if (absX == absY) {
+            return absX;
+        }
+        if (absX == 0 || absY == 0) {
+            return Math.max(absX, absY);
+        }
+        return 1;
     }
 
 }
