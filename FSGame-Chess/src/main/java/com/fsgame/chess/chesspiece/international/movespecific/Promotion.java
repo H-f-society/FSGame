@@ -2,7 +2,6 @@ package com.fsgame.chess.chesspiece.international.movespecific;
 
 import com.fsgame.chess.chessboard.Board;
 import com.fsgame.chess.chesspiece.Piece;
-import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
 
