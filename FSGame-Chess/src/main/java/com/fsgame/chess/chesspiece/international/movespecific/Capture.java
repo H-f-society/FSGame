@@ -20,6 +20,8 @@ public class Capture extends AbstractIntlPieceMove {
     @Override
     public boolean move(Board board, int[] source, int[] target) {
         if (board.getPiece(source) != null && board.getPiece(target) != null) {
+            board.swap(source, target);
+            board.updateBoard(source, null);
             return true;
         }
         return false;

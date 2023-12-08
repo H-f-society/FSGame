@@ -143,6 +143,13 @@ public class IntlChessBoard implements Board {
     }
 
     @Override
+    public void swap(int[] source, int[] target) {
+        Piece piece = getPiece(source);
+        updateBoard(source, getPiece(target));
+        updateBoard(target, piece);
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 

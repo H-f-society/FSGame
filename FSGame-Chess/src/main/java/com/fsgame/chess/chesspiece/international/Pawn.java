@@ -1,9 +1,7 @@
 package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chessboard.Board;
-import com.fsgame.chess.chesspiece.international.movespecific.Capture;
-import com.fsgame.chess.chesspiece.international.movespecific.EnPassnt;
-import com.fsgame.chess.chesspiece.international.movespecific.PawnCature;
+import com.fsgame.chess.chesspiece.international.movespecific.EnPassant;
 import com.fsgame.chess.chesspiece.international.movespecific.Promotion;
 import com.fsgame.chess.enums.DirectionEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
@@ -30,9 +28,8 @@ public class Pawn extends AbstractIntlChessPiece {
     @Override
     protected void initAllowMoveBehavior() {
         allowMoveBehaviorList.clear();
-        allowMoveBehaviorList.add(new PawnCature());
         allowMoveBehaviorList.add(new Promotion());
-        allowMoveBehaviorList.add(new EnPassnt());
+        allowMoveBehaviorList.add(new EnPassant());
     }
 
     @Override

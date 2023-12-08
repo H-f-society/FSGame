@@ -33,4 +33,6 @@ public interface Board {
     int rows();
 
     int columns();
+
+    void swap(int[] source, int[] target);
 }

@@ -16,6 +16,8 @@ public class FSGameChessApplication {
         board.move(new int[]{4, 0}, new int[]{3, 1});
         board.move(new int[]{7, 2}, new int[]{5, 4});
 
+        // board.swap(new int[]{0, 0}, new int[]{1, 1});
+
         System.out.println(board);
 
 

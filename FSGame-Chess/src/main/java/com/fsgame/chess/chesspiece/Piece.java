@@ -24,4 +24,8 @@ public interface Piece {
     boolean allowMove(int[] coord);
 
     BaseEnum move(int[] coord);
+
+    int stepNum(int[] coord);
+
+    int stepNum(int[] source, int[] target);
 }

@@ -68,8 +68,7 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
         if (!super.allowMove(coord) || !this.allowMove(coord)) {
             return IntlBehaviorEnum.NOT_MOVE;
         }
-        board.updateBoard(this.coord[0], this.coord[1], null);
-        board.updateBoard(coord[0], coord[1], this);
+        board.swap(this.coord, coord);
         stepCount++;
         return IntlBehaviorEnum.MOVE;
     }
@@ -102,14 +101,15 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
         return true;
     }
 
-    protected int stepNum(int[] coord) {
-        return stepNum(coord[0], coord[1]);
+    @Override
+    public int stepNum(int[] coord) {
+        return stepNum(this.coord, coord);
     }
 
-    // 间隔步数（格子）
-    protected int stepNum(int x, int y) {
-        int absX = Math.abs(this.coord[0] - x);
-        int absY = Math.abs(this.coord[1] - y);
+    @Override
+    public int stepNum(int[] source, int[] target) {
+        int absX = Math.abs(source[0] - target[0]);
+        int absY = Math.abs(source[1] - target[0]);
         if (absX == absY) {
             return absX;
         }
