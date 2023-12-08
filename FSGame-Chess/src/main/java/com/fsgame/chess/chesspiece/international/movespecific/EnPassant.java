@@ -15,6 +15,8 @@ public class EnPassant extends Capture {
 
     private IntlBehaviorEnum moveBehavior = IntlBehaviorEnum.EN_PASSANT;
 
+    private static final IntlPieceEnum PIECE = IntlPieceEnum.P;
+
     @Override
     public IntlBehaviorEnum getType() {
         return moveBehavior;
@@ -37,7 +39,7 @@ public class EnPassant extends Capture {
         Piece sourcePiece = board.getPiece(source);
         Piece targetPiece = board.getPiece(target);
 
-        if (sourcePiece == null || !IntlPieceEnum.P.equals(sourcePiece.getType())) {
+        if (sourcePiece == null || !PIECE.equals(sourcePiece.getType())) {
             return false;
         }
         // 俩棋子不能为同一色
@@ -58,7 +60,7 @@ public class EnPassant extends Capture {
         Piece lastPiece = walkingRecords.getPiece();
 
         // 吃过路兵，旁侧棋子和上一条记录的棋子大都是同一个小兵，并且上一次移动了2次，允许吃
-        if (lastPiece.equals(beside) && IntlPieceEnum.P.equals(lastPiece.getType())) {
+        if (lastPiece.equals(beside) && PIECE.equals(lastPiece.getType())) {
             int stepNum = lastPiece.stepNum(walkingRecords.getSource(), walkingRecords.getTarget());
             if (stepNum == 2) {
                 board.swap(source, target);

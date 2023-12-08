@@ -125,3 +125,5 @@ aFSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/international/movespecif
 lFSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/international/movespecific/AbstractIntlPieceMove.java,4\b\4bf2f1d8ace55e61dbb580a33218fd94f1ed6eb2
 ê
 `FSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/international/movespecific/EnPassant.java,7\0\70e26a521d257b92a6f7dc2d98b731b25f92e623
+è
+_FSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/international/movespecific/Castling.java,b\6\b61e602388587c1cefd9c38539733202c3d2c647

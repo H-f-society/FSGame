@@ -29,12 +29,15 @@ public class FSGameChessApplication {
         board.move(new int[]{4, 0}, new int[]{1, 3});
         System.out.println(board);
 
+        board.move(new int[]{1, 3}, new int[]{0, 2});
+        System.out.println(board);
 
-        board.move(new int[]{7, 2}, new int[]{5, 4});
+
+        // board.move(new int[]{7, 2}, new int[]{5, 4});
 
         // board.swap(new int[]{0, 0}, new int[]{1, 1});
 
-        System.out.println(board);
+        // System.out.println(board);
 
 
 

@@ -1,7 +1,7 @@
 package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chessboard.Board;
-import com.fsgame.chess.chesspiece.international.movespecific.Castline;
+import com.fsgame.chess.chesspiece.international.movespecific.Castling;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
 import com.fsgame.chess.utils.DirectionUtil;
 
@@ -25,7 +25,7 @@ public class King extends AbstractIntlChessPiece {
     @Override
     protected void initAllowMoveBehavior() {
         super.initAllowMoveBehavior();
-        allowMoveBehaviorList.add(new Castline());
+        allowMoveBehaviorList.add(new Castling());
     }
 
     @Override
