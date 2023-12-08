@@ -13,11 +13,15 @@ import com.fsgame.chess.enums.international.IntlPieceEnum;
  */
 public class EnPassant extends Capture {
 
-    private static final IntlBehaviorEnum MOVE_BEHAVIOR = IntlBehaviorEnum.EN_PASSANT;
+    private IntlBehaviorEnum moveBehavior = IntlBehaviorEnum.EN_PASSANT;
 
     @Override
     public IntlBehaviorEnum getType() {
-        return MOVE_BEHAVIOR;
+        return moveBehavior;
+    }
+
+    private void setMoveBehavior(IntlBehaviorEnum intlBehaviorEnum) {
+        this.moveBehavior = intlBehaviorEnum;
     }
 
     @Override
@@ -44,18 +48,24 @@ public class EnPassant extends Capture {
         if (targetPiece != null) {
             board.swap(source, target);
             board.updateBoard(source, null);
+            setMoveBehavior(IntlBehaviorEnum.CAPTURE);
             return true;
         }
         // target那一侧方向，在source旁边的棋子，是否为小兵
         Piece beside = board.getPiece(source[0], target[1]);
         // 上一次移动记录的棋子，是不是小兵
-        WalkingRecords walkingRecords = board.getRecords().peek();
+        WalkingRecords walkingRecords = board.getRecords().getLast();
         Piece lastPiece = walkingRecords.getPiece();
 
-        // 旁侧棋子和上一条记录的棋子大都是同一个小兵，并且上一次移动了2次，允许吃
+        // 吃过路兵，旁侧棋子和上一条记录的棋子大都是同一个小兵，并且上一次移动了2次，允许吃
         if (lastPiece.equals(beside) && IntlPieceEnum.P.equals(lastPiece.getType())) {
             int stepNum = lastPiece.stepNum(walkingRecords.getSource(), walkingRecords.getTarget());
-            return stepNum == 2;
+            if (stepNum == 2) {
+                board.swap(source, target);
+                board.updateBoard(source[0], target[1], null);
+                return true;
+            }
+
         }
 
         return false;

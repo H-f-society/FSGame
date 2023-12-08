@@ -1,9 +1,12 @@
 package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chessboard.Board;
+import com.fsgame.chess.chesspiece.PieceMove;
 import com.fsgame.chess.chesspiece.international.movespecific.EnPassant;
 import com.fsgame.chess.chesspiece.international.movespecific.Promotion;
+import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.DirectionEnum;
+import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
 
 /**
@@ -44,5 +47,23 @@ public class Pawn extends AbstractIntlChessPiece {
         }
         super.allowMove(coord);
         return true;
+    }
+
+    @Override
+    public BaseEnum move(int[] coord) {
+        if (!super.allowMove(coord) || !this.allowMove(coord)) {
+            return IntlBehaviorEnum.NOT_MOVE;
+        }
+        for (PieceMove pieceMove : allowMoveBehaviorList) {
+            if (pieceMove.move(board, this.coord, coord)) {
+                return pieceMove.getType();
+            }
+        }
+        if (board.getPiece(coord) != null) {
+            return IntlBehaviorEnum.NOT_MOVE;
+        }
+        board.swap(this.coord, coord);
+        stepCount++;
+        return IntlBehaviorEnum.MOVE;
     }
 }

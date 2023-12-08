@@ -1,6 +1,7 @@
 package com.fsgame.chess.chesspiece.international.movespecific;
 
 import com.fsgame.chess.chessboard.Board;
+import com.fsgame.chess.chesspiece.Piece;
 import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 
 /**
@@ -19,11 +20,19 @@ public class Capture extends AbstractIntlPieceMove {
 
     @Override
     public boolean move(Board board, int[] source, int[] target) {
-        if (board.getPiece(source) != null && board.getPiece(target) != null) {
-            board.swap(source, target);
-            board.updateBoard(source, null);
-            return true;
+        Piece sourcePiece = board.getPiece(source);
+        Piece targetPiece = board.getPiece(target);
+        if (sourcePiece == null || targetPiece == null) {
+            return false;
         }
-        return false;
+
+        // 俩棋子不能为同一色
+        if (targetPiece != null && sourcePiece.getRole().equals(targetPiece.getRole())) {
+            return false;
+        }
+
+        board.swap(source, target);
+        board.updateBoard(source, null);
+        return true;
     }
 }

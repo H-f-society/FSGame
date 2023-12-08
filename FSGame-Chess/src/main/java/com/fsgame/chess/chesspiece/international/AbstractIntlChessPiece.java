@@ -1,6 +1,7 @@
 package com.fsgame.chess.chesspiece.international;
 
 import com.fsgame.chess.chessboard.Board;
+import com.fsgame.chess.chessboard.WalkingRecords;
 import com.fsgame.chess.chesspiece.AbstractPiece;
 import com.fsgame.chess.chesspiece.Piece;
 import com.fsgame.chess.chesspiece.PieceMove;
@@ -8,6 +9,7 @@ import com.fsgame.chess.chesspiece.international.movespecific.Capture;
 import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.DirectionEnum;
 import com.fsgame.chess.enums.international.IntlBehaviorEnum;
+import com.fsgame.chess.enums.international.IntlRoleEnum;
 import com.fsgame.chess.utils.DirectionUtil;
 
 import java.util.*;
@@ -53,6 +55,18 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
 
     @Override
     public boolean allowMove(int[] coord) {
+        // 黑白先后顺序判定，取决于历史记录（这段先注释，测试完在放开）
+        /*if (board.getRecords().isEmpty() && IntlRoleEnum.B.equals(board.getRoleEnum())) {
+            return false;
+        }
+        if (!board.getRecords().isEmpty()) {
+            WalkingRecords walkingRecords = board.getRecords().getLast();
+            Piece lastPiece = walkingRecords.getPiece();
+            if (lastPiece.getRole().equals(getRole())) {
+                return false;
+            }
+        }*/
+
         // 如果目标格子上的棋子和当前格子上的棋子为同一色，不允许移动
         Piece targetPiece = board.getPiece(coord);
         if (targetPiece != null && getRole().equals(targetPiece.getRole())) {
@@ -67,6 +81,11 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
     public BaseEnum move(int[] coord) {
         if (!super.allowMove(coord) || !this.allowMove(coord)) {
             return IntlBehaviorEnum.NOT_MOVE;
+        }
+        for (PieceMove pieceMove : allowMoveBehaviorList) {
+            if (pieceMove.move(board, this.coord, coord)) {
+                return pieceMove.getType();
+            }
         }
         board.swap(this.coord, coord);
         stepCount++;
@@ -108,8 +127,8 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
 
     @Override
     public int stepNum(int[] source, int[] target) {
-        int absX = Math.abs(source[0] - target[0]);
-        int absY = Math.abs(source[1] - target[0]);
+        int absX = Math.abs(target[0] - source[0]);
+        int absY = Math.abs(target[1] - source[1]);
         if (absX == absY) {
             return absX;
         }

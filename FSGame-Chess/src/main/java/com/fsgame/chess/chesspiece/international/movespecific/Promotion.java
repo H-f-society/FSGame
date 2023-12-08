@@ -36,6 +36,11 @@ public class Promotion extends AbstractIntlPieceMove {
         // 当前移动小兵的目标底线
         int targetSideLine = board.getRoleEnum().equals(sourcePiece.getRole()) ? OPPONENT_SIDE_LINE_X_INDEX : MYSELF_SIDE_LINE_X_INDEX;
 
-        return target[0] == targetSideLine;
+        // 默认只是移动过去，不升变
+        if (target[0] == targetSideLine) {
+            board.swap(source, target);
+            return true;
+        }
+        return false;
     }
 }

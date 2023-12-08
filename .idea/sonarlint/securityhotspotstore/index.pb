@@ -123,3 +123,5 @@ _FSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/international/movespecif
 aFSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/international/movespecific/PawnCature.java,9\2\9233014f936059b1c5ddf890ce6df31698c1917e
 ú
 lFSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/international/movespecific/AbstractIntlPieceMove.java,4\b\4bf2f1d8ace55e61dbb580a33218fd94f1ed6eb2
+ê
+`FSGame-Chess/src/main/java/com/fsgame/chess/chesspiece/international/movespecific/EnPassant.java,7\0\70e26a521d257b92a6f7dc2d98b731b25f92e623
