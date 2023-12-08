@@ -2,6 +2,7 @@ package com.fsgame.chess.chesspiece.international.movespecific;
 
 import com.fsgame.chess.chessboard.WalkingRecords;
 import com.fsgame.chess.chesspiece.PieceMove;
+import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 
 /**
@@ -14,7 +15,13 @@ public abstract class AbstractIntlPieceMove implements PieceMove {
     protected static final IntlBehaviorEnum BASE_MOVE_BEHAVIOR = IntlBehaviorEnum.MOVE;
 
     @Override
+    public IntlBehaviorEnum getType() {
+        return BASE_MOVE_BEHAVIOR;
+    }
+
+    @Override
     public void repentance(WalkingRecords walkingRecords) {
 
     }
+
 }

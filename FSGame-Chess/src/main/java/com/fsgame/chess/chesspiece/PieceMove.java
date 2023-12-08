@@ -11,7 +11,9 @@ import com.fsgame.chess.enums.BaseEnum;
  */
 public interface PieceMove {
 
-    BaseEnum move(Board board, int[] source, int[] target);
+    BaseEnum getType();
+
+    boolean move(Board board, int[] source, int[] target);
 
     void repentance(WalkingRecords walkingRecords);
 

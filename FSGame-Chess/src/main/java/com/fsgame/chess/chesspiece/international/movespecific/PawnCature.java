@@ -1,7 +1,8 @@
 package com.fsgame.chess.chesspiece.international.movespecific;
 
 import com.fsgame.chess.chessboard.Board;
-import com.fsgame.chess.enums.BaseEnum;
+import com.fsgame.chess.chesspiece.Piece;
+import com.fsgame.chess.enums.international.IntlPieceEnum;
 
 /**
  * @Author: root
@@ -10,11 +11,10 @@ import com.fsgame.chess.enums.BaseEnum;
  */
 public class PawnCature extends Capture {
 
+
     @Override
-    public BaseEnum move(Board board, int[] source, int[] target) {
-        if (board.getPiece(source) != null && board.getPiece(target) != null) {
-            return MOVE_BEHAVIOR;
-        }
-        return BASE_MOVE_BEHAVIOR;
+    public boolean move(Board board, int[] source, int[] target) {
+
+        return true;
     }
 }

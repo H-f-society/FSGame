@@ -14,8 +14,13 @@ public class Castline extends AbstractIntlPieceMove {
     private static final IntlBehaviorEnum MOVE_BEHAVIOR = IntlBehaviorEnum.CASTLING;
 
     @Override
-    public BaseEnum move(Board board, int[] source, int[] target) {
-        return BASE_MOVE_BEHAVIOR;
+    public IntlBehaviorEnum getType() {
+        return MOVE_BEHAVIOR;
+    }
+
+    @Override
+    public boolean move(Board board, int[] source, int[] target) {
+        return false;
     }
 
 }

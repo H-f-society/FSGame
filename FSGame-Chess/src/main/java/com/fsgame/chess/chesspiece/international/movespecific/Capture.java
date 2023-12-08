@@ -14,11 +14,15 @@ public class Capture extends AbstractIntlPieceMove {
     protected static final IntlBehaviorEnum MOVE_BEHAVIOR = IntlBehaviorEnum.CAPTURE;
 
     @Override
-    public BaseEnum move(Board board, int[] source, int[] target) {
-        if (board.getPiece(source) != null && board.getPiece(target) != null) {
-            return MOVE_BEHAVIOR;
-        }
-        return BASE_MOVE_BEHAVIOR;
+    public IntlBehaviorEnum getType() {
+        return MOVE_BEHAVIOR;
     }
 
+    @Override
+    public boolean move(Board board, int[] source, int[] target) {
+        if (board.getPiece(source) != null && board.getPiece(target) != null) {
+            return true;
+        }
+        return false;
+    }
 }

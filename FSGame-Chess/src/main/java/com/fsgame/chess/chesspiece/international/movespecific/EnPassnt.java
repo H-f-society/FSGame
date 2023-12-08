@@ -14,7 +14,12 @@ public class EnPassnt extends AbstractIntlPieceMove {
     private static final IntlBehaviorEnum MOVE_BEHAVIOR = IntlBehaviorEnum.EN_PASSANT;
 
     @Override
-    public BaseEnum move(Board board, int[] source, int[] target) {
-        return BASE_MOVE_BEHAVIOR;
+    public IntlBehaviorEnum getType() {
+        return MOVE_BEHAVIOR;
+    }
+
+    @Override
+    public boolean move(Board board, int[] source, int[] target) {
+        return false;
     }
 }
