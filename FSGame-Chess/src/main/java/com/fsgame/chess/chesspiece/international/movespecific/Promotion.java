@@ -13,8 +13,6 @@ import com.fsgame.chess.enums.international.IntlPieceEnum;
  */
 public class Promotion extends AbstractIntlPieceMove {
 
-    private IntlBehaviorEnum moveBehavior = IntlBehaviorEnum.PROMOTION;
-
     private static final IntlPieceEnum PIECE = IntlPieceEnum.P;
 
     // 我方底线X轴索引值
@@ -22,13 +20,9 @@ public class Promotion extends AbstractIntlPieceMove {
 
     // 对公底线X轴索引值
     private static final int OPPONENT_SIDE_LINE_X_INDEX = 0;
-    @Override
-    public IntlBehaviorEnum getType() {
-        return moveBehavior;
-    }
 
-    private void setMoveBehavior(IntlBehaviorEnum intlBehaviorEnum) {
-        this.moveBehavior = intlBehaviorEnum;
+    public Promotion() {
+        super(IntlBehaviorEnum.PROMOTION);
     }
 
     @Override

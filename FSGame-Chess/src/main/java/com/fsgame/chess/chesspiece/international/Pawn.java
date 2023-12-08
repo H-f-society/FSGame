@@ -8,6 +8,7 @@ import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.DirectionEnum;
 import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
+import com.fsgame.chess.utils.DirectionUtil;
 
 /**
  * @Author: root
@@ -62,8 +63,13 @@ public class Pawn extends AbstractIntlChessPiece {
         if (board.getPiece(coord) != null) {
             return IntlBehaviorEnum.NOT_MOVE;
         }
-        board.swap(this.coord, coord);
-        stepCount++;
-        return IntlBehaviorEnum.MOVE;
+        // 前面吃子和吃过路兵条件都不满足，那只能向前移动了
+        DirectionEnum dire = isMyPiece() ? DirectionEnum.UP : DirectionEnum.DOWN;
+        if (dire.equals(DirectionUtil.calcDirection(this.coord, coord))) {
+            board.swap(this.coord, coord);
+            stepCount++;
+            return IntlBehaviorEnum.MOVE;
+        }
+        return IntlBehaviorEnum.NOT_MOVE;
     }
 }

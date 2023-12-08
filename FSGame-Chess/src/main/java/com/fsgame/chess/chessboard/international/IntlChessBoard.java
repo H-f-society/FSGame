@@ -125,7 +125,7 @@ public class IntlChessBoard implements Board {
         WalkingRecords walkingRecords = new WalkingRecords.Builder()
                 .source(source)
                 .target(target)
-                .piece(piece)
+                .piece(getPiece(target))
                 .behavior(new Behavior(piece, targetPiece, behaviorEnum))
                 .build();
         walkingRecordsStack.add(walkingRecords);

@@ -11,11 +11,12 @@ import com.fsgame.chess.enums.international.IntlBehaviorEnum;
  */
 public class Capture extends AbstractIntlPieceMove {
 
-    protected static final IntlBehaviorEnum MOVE_BEHAVIOR = IntlBehaviorEnum.CAPTURE;
+    public Capture() {
+        this(IntlBehaviorEnum.CAPTURE);
+    }
 
-    @Override
-    public IntlBehaviorEnum getType() {
-        return MOVE_BEHAVIOR;
+    public Capture(IntlBehaviorEnum moveBehavior) {
+        super(moveBehavior);
     }
 
     @Override

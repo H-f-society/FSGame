@@ -13,17 +13,10 @@ import com.fsgame.chess.enums.international.IntlPieceEnum;
  */
 public class EnPassant extends Capture {
 
-    private IntlBehaviorEnum moveBehavior = IntlBehaviorEnum.EN_PASSANT;
-
     private static final IntlPieceEnum PIECE = IntlPieceEnum.P;
 
-    @Override
-    public IntlBehaviorEnum getType() {
-        return moveBehavior;
-    }
-
-    private void setMoveBehavior(IntlBehaviorEnum intlBehaviorEnum) {
-        this.moveBehavior = intlBehaviorEnum;
+    public EnPassant() {
+        super(IntlBehaviorEnum.EN_PASSANT);
     }
 
     @Override

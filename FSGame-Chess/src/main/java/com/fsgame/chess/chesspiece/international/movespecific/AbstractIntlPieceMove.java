@@ -11,12 +11,23 @@ import com.fsgame.chess.enums.international.IntlBehaviorEnum;
  * @Description:
  */
 public abstract class AbstractIntlPieceMove implements PieceMove {
+    private IntlBehaviorEnum moveBehavior;
 
-    protected static final IntlBehaviorEnum BASE_MOVE_BEHAVIOR = IntlBehaviorEnum.MOVE;
+    public AbstractIntlPieceMove() {
+        this(IntlBehaviorEnum.MOVE);
+    }
+
+    public AbstractIntlPieceMove(IntlBehaviorEnum moveBehavior) {
+        this.moveBehavior = moveBehavior;
+    }
 
     @Override
     public IntlBehaviorEnum getType() {
-        return BASE_MOVE_BEHAVIOR;
+        return moveBehavior;
+    }
+
+    protected void setMoveBehavior(IntlBehaviorEnum intlBehaviorEnum) {
+        this.moveBehavior = intlBehaviorEnum;
     }
 
     @Override
