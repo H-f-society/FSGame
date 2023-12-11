@@ -1,5 +1,6 @@
 package com.fsgame.chess.utils;
 
+import com.fsgame.chess.chesspiece.Piece;
 import com.fsgame.chess.enums.BaseEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
 import com.fsgame.chess.enums.international.IntlRoleEnum;

@@ -25,7 +25,7 @@ public abstract class AbstractPiece implements Piece {
 
     @Override
     public boolean allowMove(int[] coord) {
-        return validRange(coord) && !(this.coord[0] == coord[0] && this.coord[1] == coord[10]);
+        return board.validRange(coord) && !(this.coord[0] == coord[0] && this.coord[1] == coord[1]);
     }
 
     @Override
@@ -50,13 +50,5 @@ public abstract class AbstractPiece implements Piece {
 
     protected boolean isMyPiece() {
         return getRole().equals(board.getRoleEnum());
-    }
-
-    protected boolean validRange(int[] coord) {
-        return validRange(coord[0], coord[1]);
-    }
-
-    protected boolean validRange(int x, int y) {
-        return x >= 0 && y >= 0 && x < board.rows() && y < board.columns();
     }
 }

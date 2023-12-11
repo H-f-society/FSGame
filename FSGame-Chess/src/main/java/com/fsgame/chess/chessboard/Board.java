@@ -35,4 +35,10 @@ public interface Board {
     int columns();
 
     void swap(int[] source, int[] target);
+
+    boolean unimpededRoute(int[] source, int[] target);
+
+    boolean validRange(int[] coord);
+
+    boolean validRange(int x, int y);
 }

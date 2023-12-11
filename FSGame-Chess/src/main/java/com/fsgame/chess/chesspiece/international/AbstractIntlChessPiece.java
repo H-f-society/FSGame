@@ -97,27 +97,7 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
      * @return true or false
      */
     protected boolean unimpededRoute(int[] coord) {
-        return unimpededRoute(this.coord, coord);
-    }
-
-    protected boolean unimpededRoute(int[] source, int[] target) {
-        // x,y轴移动的方向(-1, 0, 1)
-        int direX = Integer.compare(target[0] - source[0], 0);
-        int direY = Integer.compare(target[1] - source[1], 0);
-
-        int tempX = source[0];
-        int tempY = source[1];
-        while(validRange(tempX, tempY)) {
-            tempX += direX;
-            tempY += direY;
-            if (tempX == target[0] && tempY == target[1]) {
-                break;
-            }
-            if (board.getPiece(tempX, tempY) != null) {
-                return false;
-            }
-        }
-        return true;
+        return board.unimpededRoute(this.coord, coord);
     }
 
     @Override

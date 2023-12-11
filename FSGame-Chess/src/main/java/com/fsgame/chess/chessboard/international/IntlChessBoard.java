@@ -76,7 +76,7 @@ public class IntlChessBoard implements Board {
 
     @Override
     public Piece getPiece(int[] coord) {
-        return getPiece(coord[0], coord[1]);
+        return validRange(coord) ? getPiece(coord[0], coord[1]) : null;
     }
 
     @Override
@@ -150,11 +150,42 @@ public class IntlChessBoard implements Board {
     }
 
     @Override
+    public boolean unimpededRoute(int[] source, int[] target) {
+        // x,y轴移动的方向(-1, 0, 1)
+        int direX = Integer.compare(target[0] - source[0], 0);
+        int direY = Integer.compare(target[1] - source[1], 0);
+
+        int tempX = source[0];
+        int tempY = source[1];
+        while(validRange(tempX, tempY)) {
+            tempX += direX;
+            tempY += direY;
+            if (tempX == target[0] && tempY == target[1]) {
+                break;
+            }
+            if (getPiece(tempX, tempY) != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean validRange(int[] coord) {
+        return validRange(coord[0], coord[1]);
+    }
+
+    @Override
+    public boolean validRange(int x, int y) {
+        return x >= 0 && y >= 0 && x < rows() && y < columns();
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
         sb.append("我方为：" + getRoleEnum().getDesc() + ", ")
-        .append((getRecords().isEmpty() ? IntlRoleEnum.W.getDesc() : getRecords().getLast().getPiece().getRole().getDesc()))
+        // .append((getRecords().isEmpty() ? IntlRoleEnum.W.getDesc() : getRecords().getLast().getPiece().getRole().getDesc()))
         .append((getRecords().isEmpty() ? "移动" : getRecords().getLast().getBehavior().getBehaviorEnum().getDesc()))
         .append("\n");
 

@@ -1,5 +1,7 @@
 
 U
-java:S34001"9Remove this method and declare a constant for this value.(¸®Ã'8åÉÃ1
+java:S34007"9Remove this method and declare a constant for this value.(¸®Ã'8 Ó‡¾Å1
+w
+java:S1128"URemove this unused import 'com.fsgame.chess.chessboard.international.IntlChessBoard'.(•üôöøÿÿÿÿ8¢‰¾Å1
 I
-java:S11440"-Remove this unused private "castling" method.(€”ï`8åÉÃ1
+java:S11446"-Remove this unused private "castling" method.(€”ï`8 Ó‡¾Å1
