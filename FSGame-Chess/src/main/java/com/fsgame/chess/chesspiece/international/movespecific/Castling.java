@@ -32,10 +32,11 @@ public class Castling extends AbstractIntlPieceMove {
         Piece rook = board.getPiece(rookSource);
 
         // 基本要求1：起始点为King，目标点为Rook，且途中无障碍
+        setMoveBehavior(IntlBehaviorEnum.NOT_MOVE);
         if (king == null || rook == null) {
             return false;
         }
-        if (!KING.equals(king.getType()) || !ROOK.equals(rook.getType()) && !board.unimpededRoute(source, target)) {
+        if (!KING.equals(king.getType()) || !ROOK.equals(rook.getType()) || !board.unimpededRoute(source, target)) {
             return false;
         }
         // 基本要求2: King和Rook均为移动过
@@ -61,6 +62,7 @@ public class Castling extends AbstractIntlPieceMove {
         }
         board.swap(source, kingCoord);
         board.swap(rookSource, rookCoord);
+        setMoveBehavior(IntlBehaviorEnum.CASTLING);
         return true;
     }
 

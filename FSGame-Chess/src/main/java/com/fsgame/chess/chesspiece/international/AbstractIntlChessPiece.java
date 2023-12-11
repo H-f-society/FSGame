@@ -67,11 +67,6 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
             }
         }*/
 
-        // 如果目标格子上的棋子和当前格子上的棋子为同一色，不允许移动
-        Piece targetPiece = board.getPiece(coord);
-        if (targetPiece != null && getRole().equals(targetPiece.getRole())) {
-            return false;
-        }
         DirectionEnum dire = DirectionUtil.calcDirection(this.coord, coord);
         // 如果目标点在可允许的移动方向上，并且路途上无障碍，允许移动
         return allowDirectionSet.contains(dire) && unimpededRoute(coord);
@@ -86,6 +81,9 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
             if (pieceMove.move(board, this.coord, coord)) {
                 return pieceMove.getType();
             }
+        }
+        if (board.getPiece(coord) != null) {
+            return IntlBehaviorEnum.NOT_MOVE;
         }
         board.swap(this.coord, coord);
         stepCount++;

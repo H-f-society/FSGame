@@ -3,7 +3,10 @@ package com.fsgame.chess.chesspiece.international;
 import com.fsgame.chess.chessboard.Board;
 import com.fsgame.chess.chessboard.international.IntlChessBoard;
 import com.fsgame.chess.chesspiece.Piece;
+import com.fsgame.chess.chesspiece.PieceMove;
 import com.fsgame.chess.chesspiece.international.movespecific.Castling;
+import com.fsgame.chess.enums.BaseEnum;
+import com.fsgame.chess.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.enums.international.IntlPieceEnum;
 import com.fsgame.chess.utils.DirectionUtil;
 
@@ -36,15 +39,18 @@ public class King extends AbstractIntlChessPiece {
     }
 
     @Override
-    public boolean allowMove(int[] coord) {
-        Piece piece = board.getPiece(coord);
-        if (stepNum(coord) == 1) {
-            return true;
+    public BaseEnum move(int[] coord) {
+        if (!super.allowMove(coord)) {
+            return IntlBehaviorEnum.NOT_MOVE;
         }
-        if (stepNum(coord) > 1 && (piece != null && IntlPieceEnum.R.equals(piece.getType()))) {
-            return true;
+        for (PieceMove pieceMove : allowMoveBehaviorList) {
+            if (pieceMove.move(board, this.coord, coord)) {
+                return pieceMove.getType();
+            }
         }
-        return super.allowMove(coord);
+        board.swap(this.coord, coord);
+        stepCount++;
+        return IntlBehaviorEnum.MOVE;
     }
 
     /**
