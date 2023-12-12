@@ -1,15 +1,17 @@
 package com.fsgame.chess.ui.utils;
 
+import cn.hutool.core.io.FileUtil;
 import com.fsgame.chess.rule.enums.BaseEnum;
 
 import java.awt.*;
+import java.io.File;
 
 /**
  * @Author: root
  * @Date: 2023/12/11 17:04
  * @Description:
  */
-public class Controlutil {
+public class ControlUtil {
 
     public static final int[] BUTTON_SIZE = {100, 50};
 
@@ -21,6 +23,8 @@ public class Controlutil {
 
     private static final String PIECE_IMG_PATH = "FSGame-Chess/src/main/resources/images/chess_01/";
 
+    public static final String PIECE_IMG = "images/";
+
     public static String getPieceImgPath(BaseEnum role, BaseEnum piece) {
         StringBuilder sb = new StringBuilder();
         sb.append(PIECE_IMG_PATH)
@@ -30,4 +34,12 @@ public class Controlutil {
             .append(".png");
         return sb.toString();
     }
+
+
+
+    // public static File[] getChessConfig() {
+    //     for (File dir : FileUtil.ls("images")) {
+    //
+    //     }
+    // }
 }

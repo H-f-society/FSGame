@@ -6,6 +6,7 @@ import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
 import com.fsgame.chess.ui.international.BoardUI;
 import com.fsgame.chess.ui.international.HomeUI;
 
+
 public class FSGameChessApplication {
 
     public static void main(String[] args) {

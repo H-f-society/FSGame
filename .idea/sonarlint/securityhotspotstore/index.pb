@@ -119,3 +119,13 @@ OFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/WalkingRecords.java
 VFSGame-Chess/src/main/java/com/fsgame/chess/rule/enums/international/IntlRoleEnum.java,2\0\20b85b6ef03f076bdf8720421c7a81e82e63247d
 y
 IFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/Behavior.java,2\a\2a8f1ba26f62255f446bd26798611601c89eaee8
+u
+EFSGame-Chess/src/main/java/com/fsgame/chess/ui/utils/ControlUtil.java,2\9\29a6072523f399d88f480248062148aa307907db
+{
+KFSGame-Chess/src/main/java/com/fsgame/chess/ui/international/LeftPanel.java,e\d\ed2133f405d04dc2c416d748ea187f544904b0a2
+|
+LFSGame-Chess/src/main/java/com/fsgame/chess/ui/international/RightPanel.java,a\f\af12d3958783e3e3bf2bd3cbe9e3efc90239e22e
+ˆ
+XFSGame-Chess/src/main/java/com/fsgame/chess/ui/international/ActionListenerObserver.java,1\f\1f57e1709ce6766b1340a19e6119aeb80598e799
+
+OFSGame-Chess/src/main/java/com/fsgame/chess/ui/international/BoardGraphics.java,e\a\ea6521605eaf7b8f591fd33c0a7e09198744a890

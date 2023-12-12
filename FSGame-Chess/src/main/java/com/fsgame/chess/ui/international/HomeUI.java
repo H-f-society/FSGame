@@ -1,6 +1,6 @@
 package com.fsgame.chess.ui.international;
 
-import com.fsgame.chess.rule.chessboard.international.IntlChessBoard;
+import com.fsgame.chess.ui.utils.ControlUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,23 +12,26 @@ import java.awt.*;
  */
 public class HomeUI extends JFrame {
 
-    private static final int UI_WIDTH = 685;
-    private static final int UI_HEIGHT = 705;
+    public static final int UI_WIDTH = ControlUtil.CELLS_SIZE * 8 + ControlUtil.PADDING;
+    public static final int UI_HEIGHT = ControlUtil.CELLS_SIZE * 8 + ControlUtil.PADDING;
 
-    private final JPanel jPanelLeft = new JPanel();
-    private final JPanel jPanelRight = new JPanel();
+    LeftPanel leftPanel = new LeftPanel();
+    RightPanel rightPanel = new RightPanel();
 
     public HomeUI() {
-        this.add(new BoardUI(new IntlChessBoard()));
+        // this.add(new BoardUI(new IntlChessBoard(IntlRoleEnum.W)));
         this.setResizable(true);
         this.setSize(UI_WIDTH, UI_HEIGHT);
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        init();
         this.setVisible(true);
     }
 
     public void init() {
-        // this.setLayout(new BorderLayout());
-        // this.add(jPanelLeft, BorderLayout.EAST);
-        // this.add(jPanelRight, BorderLayout.WEST);
+        this.setLayout(new BorderLayout());
+        leftPanel.setObserver(rightPanel);
+        this.add(leftPanel, BorderLayout.WEST);
+        this.add(rightPanel, BorderLayout.CENTER);
     }
 }

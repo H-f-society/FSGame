@@ -1,45 +1,25 @@
 package com.fsgame.chess.ui.international;
 
-import com.fsgame.chess.rule.chessboard.Board;
-import com.fsgame.chess.rule.chesspiece.Piece;
-import com.fsgame.chess.ui.utils.Controlutil;
+import com.fsgame.chess.rule.chessboard.international.IntlChessBoard;
+import com.fsgame.chess.ui.utils.ControlUtil;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * @Author: root
  * @Date: 2023/12/11 16:59
  * @Description:
  */
-public class BoardUI extends JPanel {
+public class BoardUI extends JFrame {
 
-    private static final String PIECE_IMG_PATH = "FSGame-Chess/src/main/resources/images/chess_01/";
+    public static final int UI_WIDTH = ControlUtil.CELLS_SIZE * 8 + (ControlUtil.PADDING * 3);
+    public static final int UI_HEIGHT = ControlUtil.CELLS_SIZE * 8 + (ControlUtil.PADDING * 3);
 
-    private final Board board;
-
-    public BoardUI(Board board) {
-        this.board = board;
-    }
-
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        for (int x = 0; x < board.rows(); x++) {
-            for (int y = 0; y < board.columns(); y++) {
-                int xCoord = x * Controlutil.CELLS_SIZE + Controlutil.PADDING;
-                int yCoord = y * Controlutil.CELLS_SIZE + Controlutil.PADDING;
-                Color color = x % 2 == y % 2 ? Controlutil.CELLS_W : Controlutil.CELLS_B;
-                g.setColor(color);
-                g.fillRect(yCoord, xCoord, Controlutil.CELLS_SIZE, Controlutil.CELLS_SIZE);
-
-                Piece piece = board.getPiece(x, y);
-                if (piece != null) {
-                    Image img = Toolkit.getDefaultToolkit()
-                            .getImage(Controlutil.getPieceImgPath(piece.getRole(), piece.getType()));
-                    g.drawImage(img, yCoord, xCoord, Controlutil.CELLS_SIZE, Controlutil.CELLS_SIZE, this);
-                }
-            }
-        }
+    public BoardUI() {
+        this.add(new BoardGraphics(new IntlChessBoard()));
+        this.setResizable(true);
+        this.setSize(UI_WIDTH, UI_HEIGHT);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 }
