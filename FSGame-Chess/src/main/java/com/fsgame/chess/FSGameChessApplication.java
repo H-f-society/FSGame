@@ -63,8 +63,7 @@ public class FSGameChessApplication {
         // Board board1 = new IntlChessBoard(IntlRoleEnum.B);
         // System.out.println(board1);
 
-        // HomeUI home = new HomeUI();
-        BoardUI boardUI = new BoardUI();
+        HomeUI home = new HomeUI();
 
 
 
