@@ -24,6 +24,18 @@ public class WalkingRecords {
         this.behavior = behavior;
     }
 
+    @Override
+    public String toString() {
+        if (piece == null) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append(piece.getRole().getDesc())
+                .append(piece.getType().getDesc())
+                .append(behavior.getBehaviorEnum().getDesc());
+        return sb.toString();
+    }
+
     public int[] getSource() {
         return source;
     }

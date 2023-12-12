@@ -1,12 +1,15 @@
 package com.fsgame.chess.rule.chesspiece.international;
 
 import com.fsgame.chess.rule.chessboard.Board;
+import com.fsgame.chess.rule.chessboard.WalkingRecords;
 import com.fsgame.chess.rule.chesspiece.AbstractPiece;
+import com.fsgame.chess.rule.chesspiece.Piece;
 import com.fsgame.chess.rule.chesspiece.PieceMove;
 import com.fsgame.chess.rule.chesspiece.international.movespecific.Capture;
 import com.fsgame.chess.rule.enums.BaseEnum;
 import com.fsgame.chess.rule.enums.DirectionEnum;
 import com.fsgame.chess.rule.enums.international.IntlBehaviorEnum;
+import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
 import com.fsgame.chess.rule.utils.DirectionUtil;
 
 import java.util.*;
@@ -53,7 +56,7 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
     @Override
     public boolean allowMove(int[] coord) {
         // 黑白先后顺序判定，取决于历史记录（这段先注释，测试完在放开）
-        /*if (board.getRecords().isEmpty() && IntlRoleEnum.B.equals(board.getRoleEnum())) {
+        if (board.getRecords().isEmpty() && IntlRoleEnum.B.equals(board.getRoleEnum())) {
             return false;
         }
         if (!board.getRecords().isEmpty()) {
@@ -62,7 +65,7 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
             if (lastPiece.getRole().equals(getRole())) {
                 return false;
             }
-        }*/
+        }
 
         DirectionEnum dire = DirectionUtil.calcDirection(this.coord, coord);
         // 如果目标点在可允许的移动方向上，并且路途上无障碍，允许移动
