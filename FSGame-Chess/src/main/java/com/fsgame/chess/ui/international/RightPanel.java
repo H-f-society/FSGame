@@ -4,7 +4,6 @@ import cn.hutool.core.io.FileUtil;
 import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
 import com.fsgame.chess.ui.utils.ControlUtil;
 
-import javax.imageio.stream.ImageInputStream;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
