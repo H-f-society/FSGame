@@ -13,7 +13,7 @@ import java.io.File;
  */
 public class ControlUtil {
 
-    public static final int[] BUTTON_SIZE = {100, 50};
+    public static final int[] BUTTON_SIZE = {200, 100};
 
     public static final int PADDING = 15;
     public static final int CELLS_SIZE = 80;

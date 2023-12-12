@@ -2,6 +2,7 @@ package com.fsgame.chess.ui.international;
 
 import com.fsgame.chess.rule.chessboard.Board;
 import com.fsgame.chess.rule.chesspiece.Piece;
+import com.fsgame.chess.rule.enums.BaseEnum;
 import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
 import com.fsgame.chess.ui.utils.ControlUtil;
 
@@ -17,10 +18,14 @@ public class BoardGraphics extends JPanel {
 
     private final Board board;
 
-    public BoardGraphics(Board board) {
+    private final String configPath;
+
+    public BoardGraphics(Board board, String configPath) {
         this.board = board;
+        this.configPath = configPath;
     }
 
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
@@ -38,10 +43,21 @@ public class BoardGraphics extends JPanel {
                 Piece piece = board.getPiece(x, y);
                 if (piece != null) {
                     Image img = Toolkit.getDefaultToolkit()
-                            .getImage(ControlUtil.getPieceImgPath(piece.getRole(), piece.getType()));
+                            .getImage(getPieceImgPath(piece.getRole(), piece.getType()));
                     g.drawImage(img, yCoord, xCoord, ControlUtil.CELLS_SIZE, ControlUtil.CELLS_SIZE, this);
                 }
             }
         }
+    }
+
+    private String getPieceImgPath(BaseEnum role, BaseEnum piece) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(configPath)
+                .append("/")
+                .append(role.getCode())
+                .append("/")
+                .append(piece.getCode())
+                .append(".png");
+        return sb.toString();
     }
 }

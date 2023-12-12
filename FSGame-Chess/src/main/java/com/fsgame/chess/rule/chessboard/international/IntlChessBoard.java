@@ -23,7 +23,7 @@ import java.util.Map;
  */
 public class IntlChessBoard implements Board {
 
-    private IntlRoleEnum roleEnum;
+    private BaseEnum roleEnum;
 
     private final Piece[][] board = new Piece[8][8];
 
@@ -33,20 +33,20 @@ public class IntlChessBoard implements Board {
         this(IntlRoleEnum.W);
     }
 
-    public IntlChessBoard(IntlRoleEnum roleEnum) {
+    public IntlChessBoard(BaseEnum roleEnum) {
         this.roleEnum = roleEnum;
         initPiece(IntlChessUtil.getMySelfPieceInitCoord(roleEnum), roleEnum);
         initPiece(IntlChessUtil.getOpponentPieceInitCoord(roleEnum), IntlRoleEnum.W.equals(roleEnum) ? IntlRoleEnum.B : IntlRoleEnum.W);
     }
 
-    private void initPiece(Map<IntlPieceEnum, int[][]> coordsMap, IntlRoleEnum roleEnum) {
-        for (Map.Entry<IntlPieceEnum, int[][]> entry : coordsMap.entrySet()) {
-            IntlPieceEnum pieceEnum = entry.getKey();
+    private void initPiece(Map<BaseEnum, int[][]> coordsMap, BaseEnum roleEnum) {
+        for (Map.Entry<BaseEnum, int[][]> entry : coordsMap.entrySet()) {
+            BaseEnum pieceEnum = entry.getKey();
             initPiece(pieceEnum, coordsMap.get(pieceEnum), roleEnum);
         }
     }
 
-    private void initPiece(IntlPieceEnum pieceEnum, int[][] coords, IntlRoleEnum roleEnum) {
+    private void initPiece(BaseEnum pieceEnum, int[][] coords, BaseEnum roleEnum) {
         try {
             for (int[] coord : coords) {
 

@@ -1,6 +1,8 @@
 package com.fsgame.chess.ui.international;
 
 import cn.hutool.core.io.FileUtil;
+import com.fsgame.chess.rule.enums.BaseEnum;
+import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
 import com.fsgame.chess.ui.utils.ControlUtil;
 
 import javax.swing.*;
@@ -16,22 +18,25 @@ import java.io.File;
  */
 public class LeftPanel extends JPanel {
 
-    private String configPath;
+
+    private BaseEnum role = IntlRoleEnum.W;
+    private String configPath = FileUtil.ls(ControlUtil.PIECE_IMG)[0].getPath();
 
     private ActionListenerObserver observer;
 
     private final JButton gameStart = new JButton("开始对弈");
 
     {
-        gameStart.addActionListener(e -> new BoardUI());
+        gameStart.addActionListener(e -> new BoardUI(configPath, role));
 
     }
 
     public LeftPanel() {
+        initRoleRaio();
         initConfigRadio();
         initControl();
 
-        this.setBackground(Color.black);
+        this.setBackground(ControlUtil.CELLS_W);
         this.setPreferredSize(new Dimension((int)(HomeUI.UI_WIDTH * 0.3), HomeUI.UI_HEIGHT));
 
         this.setLayout(new FlowLayout());
@@ -39,6 +44,19 @@ public class LeftPanel extends JPanel {
 
     private void initControl() {
         this.add(gameStart);
+    }
+
+    private void initRoleRaio() {
+        ButtonGroup group = new ButtonGroup();
+
+        for (BaseEnum role : IntlRoleEnum.values()) {
+            JRadioButton radio = new JRadioButton(role.getDesc());
+            radio.addActionListener(e -> {
+                setRole(role);
+            });
+            this.add(radio);
+            group.add(radio);
+        }
     }
 
     private void initConfigRadio() {
@@ -50,7 +68,7 @@ public class LeftPanel extends JPanel {
             String name = config.getName();
             JRadioButton radio = new JRadioButton(name);
             radio.addActionListener(e -> {
-                setConfigPath(name);
+                setConfigPath(config.getPath());
                 // 当按钮被点击时，通知观察者
                 if (observer != null) {
                     observer.showPieceImg(name);
@@ -63,6 +81,10 @@ public class LeftPanel extends JPanel {
 
     public void setObserver(ActionListenerObserver observer) {
         this.observer = observer;
+    }
+
+    public void setRole(BaseEnum role) {
+        this.role = role;
     }
 
     public void setConfigPath(String configPath) {

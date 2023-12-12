@@ -18,7 +18,7 @@ import java.io.File;
 public class RightPanel extends JPanel implements ActionListenerObserver {
 
     public RightPanel() {
-        this.setBackground(Color.gray);
+        this.setBackground(ControlUtil.CELLS_B);
         this.setPreferredSize(new Dimension((int)(HomeUI.UI_WIDTH * 0.3), HomeUI.UI_HEIGHT));
     }
 

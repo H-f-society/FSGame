@@ -31,26 +31,26 @@ public class IntlChessUtil {
     public static final int[][] MYSELF_R = {{7, 0}, {7, 7}};
     public static final int[][] MYSELF_P = {{6, 0}, {6, 1}, {6, 2}, {6, 3}, {6, 4}, {6, 5}, {6, 6}, {6, 7}};
 
-    public static Map<IntlPieceEnum, int[][]> getMySelfPieceInitCoord(BaseEnum roleEnum) {
+    public static Map<BaseEnum, int[][]> getMySelfPieceInitCoord(BaseEnum roleEnum) {
         int[][] kingCoord = IntlRoleEnum.W.equals(roleEnum) ? WHITE_K : WHITE_Q;
         int[][] queenCoord = IntlRoleEnum.W.equals(roleEnum) ? WHITE_Q : WHITE_K;
         return getIntlPieceEnumMap(kingCoord, queenCoord, MYSELF_B, MYSELF_N, MYSELF_R, MYSELF_P);
     }
 
-    public static Map<IntlPieceEnum, int[][]> getOpponentPieceInitCoord(BaseEnum roleEnum) {
+    public static Map<BaseEnum, int[][]> getOpponentPieceInitCoord(BaseEnum roleEnum) {
         int[][] kingCoord = IntlRoleEnum.B.equals(roleEnum) ? BLACK_Q : BLACK_K;
         int[][] queenCoord = IntlRoleEnum.B.equals(roleEnum) ? BLACK_K : BLACK_Q;
         return getIntlPieceEnumMap(kingCoord, queenCoord, OPPONENT_B, OPPONENT_N, OPPONENT_R, OPPONENT_P);
     }
 
-    private static Map<IntlPieceEnum, int[][]> getIntlPieceEnumMap(
+    private static Map<BaseEnum, int[][]> getIntlPieceEnumMap(
               int[][] king
             , int[][] queen
             , int[][] bishop
             , int[][] knight
             , int[][] rook
             , int[][] pawn) {
-        Map<IntlPieceEnum, int[][]> coordsMap = new HashMap<>();
+        Map<BaseEnum, int[][]> coordsMap = new HashMap<>();
         coordsMap.put(IntlPieceEnum.K, king);
         coordsMap.put(IntlPieceEnum.Q, queen);
         coordsMap.put(IntlPieceEnum.B, bishop);
