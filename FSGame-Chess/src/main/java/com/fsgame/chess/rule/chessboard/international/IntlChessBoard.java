@@ -109,11 +109,26 @@ public class IntlChessBoard implements Board {
         return walkingRecordsStack;
     }
 
+    private boolean allowMove(int[] source) {
+        // 黑白先后顺序判定，取决于历史记录（这段先注释，测试完在放开）
+        if (getRecords().isEmpty() && IntlRoleEnum.B.equals(getRoleEnum())) {
+            return false;
+        }
+        if (!getRecords().isEmpty()) {
+            WalkingRecords walkingRecords = getRecords().getLast();
+            Piece lastPiece = walkingRecords.getPiece();
+            if (lastPiece.getRole().equals(getPiece(source).getRole())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public boolean move(int[] source, int[] target) {
         Piece piece = board[source[0]][source[1]];
         Piece targetPiece = board[target[0]][target[1]];
-        if (piece == null) {
+        if (piece == null || !allowMove(source)) {
             return false;
         }
 

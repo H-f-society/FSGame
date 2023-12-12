@@ -55,18 +55,6 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
 
     @Override
     public boolean allowMove(int[] coord) {
-        // 黑白先后顺序判定，取决于历史记录（这段先注释，测试完在放开）
-        if (board.getRecords().isEmpty() && IntlRoleEnum.B.equals(board.getRoleEnum())) {
-            return false;
-        }
-        if (!board.getRecords().isEmpty()) {
-            WalkingRecords walkingRecords = board.getRecords().getLast();
-            Piece lastPiece = walkingRecords.getPiece();
-            if (lastPiece.getRole().equals(getRole())) {
-                return false;
-            }
-        }
-
         DirectionEnum dire = DirectionUtil.calcDirection(this.coord, coord);
         // 如果目标点在可允许的移动方向上，并且路途上无障碍，允许移动
         return allowDirectionSet.contains(dire) && unimpededRoute(coord);
