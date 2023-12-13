@@ -46,16 +46,11 @@ public class King extends AbstractIntlChessPiece {
                 return pieceMove.getType();
             }
         }
+        if (stepNum(coord) > 1 || (board.getPiece(coord) != null && getRole().equals(board.getPiece(coord).getRole()))) {
+            return IntlBehaviorEnum.NOT_MOVE;
+        }
         board.swap(this.coord, coord);
         stepCount++;
         return IntlBehaviorEnum.MOVE;
-    }
-
-    /**
-     * 王车易位
-     * @return
-     */
-    private boolean castling() {
-        return false;
     }
 }

@@ -41,15 +41,14 @@ public class BoardGraphics extends JPanel {
                 int x = (int) Math.floor((double) (e.getY() - ControlUtil.PADDING) / ControlUtil.CELLS_SIZE);
                 int y = (int) Math.floor((double) (e.getX() - ControlUtil.PADDING) / ControlUtil.CELLS_SIZE);
 
-                System.out.print("第 " + clickCount + " 点击..");
+                System.out.print("第 " + (clickCount % 2 == 0 ? 0 : 1) + " 点击..");
 
-                if (clickCount == 0) {
-                    clickCount = 1;
+                if (clickCount % 2 == 0) {
                     source = new int[]{x, y};
                 } else {
-                    clickCount = 0;
                     move(source, new int[]{x, y});
                 }
+                clickCount++;
             }
         });
     }
@@ -60,8 +59,6 @@ public class BoardGraphics extends JPanel {
             System.out.println("不允许移动：" + Arrays.toString(source) + "->" + Arrays.toString(target) );
             return;
         }
-        // setPiece(source);
-        // setPiece(target);
         this.revalidate();
         this.repaint();
         System.out.println(board.getRecords().getLast() + Arrays.toString(source) + "->" + Arrays.toString(target));
