@@ -1,9 +1,11 @@
 package com.fsgame.chess.rule.chessboard;
 
 import com.fsgame.chess.rule.chesspiece.Piece;
+import com.fsgame.chess.rule.chesspiece.PieceMove;
 import com.fsgame.chess.rule.enums.BaseEnum;
 
 import java.util.Deque;
+import java.util.Map;
 
 /**
  * @Author: root
@@ -41,4 +43,6 @@ public interface Board {
     boolean validRange(int[] coord);
 
     boolean validRange(int x, int y);
+
+    Map<String, PieceMove> getPieceMoveBehavior();
 }

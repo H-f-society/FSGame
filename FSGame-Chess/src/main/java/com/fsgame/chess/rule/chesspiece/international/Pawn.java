@@ -32,8 +32,8 @@ public class Pawn extends AbstractIntlChessPiece {
     @Override
     protected void initAllowMoveBehavior() {
         allowMoveBehaviorList.clear();
-        allowMoveBehaviorList.add(new Promotion());
-        allowMoveBehaviorList.add(new EnPassant());
+        allowMoveBehaviorList.add(board.getPieceMoveBehavior().get(IntlBehaviorEnum.PROMOTION.getCode()));
+        allowMoveBehaviorList.add(board.getPieceMoveBehavior().get(IntlBehaviorEnum.EN_PASSANT.getCode()));
     }
 
     @Override

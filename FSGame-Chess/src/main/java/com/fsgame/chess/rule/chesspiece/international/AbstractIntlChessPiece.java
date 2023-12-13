@@ -1,18 +1,17 @@
 package com.fsgame.chess.rule.chesspiece.international;
 
 import com.fsgame.chess.rule.chessboard.Board;
-import com.fsgame.chess.rule.chessboard.WalkingRecords;
 import com.fsgame.chess.rule.chesspiece.AbstractPiece;
-import com.fsgame.chess.rule.chesspiece.Piece;
 import com.fsgame.chess.rule.chesspiece.PieceMove;
-import com.fsgame.chess.rule.chesspiece.international.movespecific.Capture;
 import com.fsgame.chess.rule.enums.BaseEnum;
 import com.fsgame.chess.rule.enums.DirectionEnum;
 import com.fsgame.chess.rule.enums.international.IntlBehaviorEnum;
-import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
 import com.fsgame.chess.rule.utils.DirectionUtil;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @Author: root
@@ -33,7 +32,7 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
     protected abstract void initAllowDirection();
 
     protected void initAllowMoveBehavior() {
-        allowMoveBehaviorList.add(new Capture());
+        allowMoveBehaviorList.add(board.getPieceMoveBehavior().get(IntlBehaviorEnum.CAPTURE.getCode()));
     }
 
     @Override

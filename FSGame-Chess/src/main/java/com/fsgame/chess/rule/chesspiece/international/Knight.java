@@ -23,12 +23,6 @@ public class Knight extends AbstractIntlChessPiece {
     }
 
     @Override
-    protected void initAllowMoveBehavior() {
-        super.initAllowMoveBehavior();
-        allowMoveBehaviorList.add(new Capture());
-    }
-
-    @Override
     public IntlPieceEnum getType() {
         return IntlPieceEnum.N;
     }

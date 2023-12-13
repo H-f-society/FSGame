@@ -28,7 +28,7 @@ public class King extends AbstractIntlChessPiece {
     @Override
     protected void initAllowMoveBehavior() {
         super.initAllowMoveBehavior();
-        allowMoveBehaviorList.add(new Castling());
+        allowMoveBehaviorList.add(board.getPieceMoveBehavior().get(IntlBehaviorEnum.CASTLING.getCode()));
     }
 
     @Override

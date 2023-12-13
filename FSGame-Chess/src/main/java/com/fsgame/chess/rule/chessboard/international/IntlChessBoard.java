@@ -4,6 +4,7 @@ import com.fsgame.chess.rule.chessboard.Behavior;
 import com.fsgame.chess.rule.chessboard.Board;
 import com.fsgame.chess.rule.chessboard.WalkingRecords;
 import com.fsgame.chess.rule.chesspiece.Piece;
+import com.fsgame.chess.rule.chesspiece.PieceMove;
 import com.fsgame.chess.rule.enums.BaseEnum;
 import com.fsgame.chess.rule.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.rule.enums.international.IntlPieceEnum;
@@ -13,6 +14,7 @@ import com.fsgame.chess.rule.utils.IntlChessUtil;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -29,12 +31,15 @@ public class IntlChessBoard implements Board {
 
     private final Deque<WalkingRecords> walkingRecordsStack = new LinkedList<>();
 
+    private final Map<String, PieceMove> pieceMoveBehavior = new HashMap<>();
+
     public IntlChessBoard() {
         this(IntlRoleEnum.W);
     }
 
     public IntlChessBoard(BaseEnum roleEnum) {
         this.roleEnum = roleEnum;
+        initPieceBehavior();
         initPiece(IntlChessUtil.getMySelfPieceInitCoord(roleEnum), roleEnum);
         initPiece(IntlChessUtil.getOpponentPieceInitCoord(roleEnum), IntlRoleEnum.W.equals(roleEnum) ? IntlRoleEnum.B : IntlRoleEnum.W);
     }
@@ -111,23 +116,25 @@ public class IntlChessBoard implements Board {
 
     private boolean allowMove(int[] source) {
         // 黑白先后顺序判定，取决于历史记录（这段先注释，测试完在放开）
-        if (getRecords().isEmpty() && IntlRoleEnum.B.equals(getRoleEnum())) {
+        Piece piece = getPiece(source);
+        if (piece == null) {
+            return false;
+        }
+        if (getRecords().isEmpty() && IntlRoleEnum.B.equals(piece.getRole())) {
             return false;
         }
         if (!getRecords().isEmpty()) {
             WalkingRecords walkingRecords = getRecords().getLast();
             Piece lastPiece = walkingRecords.getPiece();
-            if (lastPiece.getRole().equals(getPiece(source).getRole())) {
-                return false;
-            }
+            return !piece.getRole().equals(lastPiece.getRole());
         }
         return true;
     }
 
     @Override
     public boolean move(int[] source, int[] target) {
-        Piece piece = board[source[0]][source[1]];
-        Piece targetPiece = board[target[0]][target[1]];
+        Piece piece = getPiece(source);
+        Piece targetPiece = getPiece(target);
         if (piece == null || !allowMove(source)) {
             return false;
         }
@@ -140,7 +147,7 @@ public class IntlChessBoard implements Board {
         WalkingRecords walkingRecords = new WalkingRecords.Builder()
                 .source(source)
                 .target(target)
-                .piece(getPiece(target))
+                .piece(getPiece(target) == null ? piece : getPiece(target))
                 .behavior(new Behavior(piece, targetPiece, behaviorEnum))
                 .build();
         walkingRecordsStack.add(walkingRecords);
@@ -172,7 +179,7 @@ public class IntlChessBoard implements Board {
 
         int tempX = source[0];
         int tempY = source[1];
-        while(validRange(tempX, tempY)) {
+        while (validRange(tempX, tempY)) {
             tempX += direX;
             tempY += direY;
             if (tempX == target[0] && tempY == target[1]) {
@@ -195,14 +202,39 @@ public class IntlChessBoard implements Board {
         return x >= 0 && y >= 0 && x < rows() && y < columns();
     }
 
+
+    private void initPieceBehavior() {
+        for (BaseEnum behaviorEnum : IntlBehaviorEnum.values()) {
+            try {
+
+                // 使用反射加载类
+                Class<?> clazz = Class.forName(IntlChessUtil.MOVE_BEHAVIOR_PATH + behaviorEnum.getCode());
+                if (clazz == null) {
+                    continue;
+                }
+
+                PieceMove pieceMove = (PieceMove) clazz.getDeclaredConstructor().newInstance();
+                pieceMoveBehavior.put(behaviorEnum.getCode().toString(), pieceMove);
+
+            } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
+                    InvocationTargetException e) {
+                System.out.println("不存在行为实体类：" + behaviorEnum.getCode() + behaviorEnum.getDesc());
+            }
+        }
+    }
+
+    public Map<String, PieceMove> getPieceMoveBehavior() {
+        return pieceMoveBehavior;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
         sb.append("我方为：" + getRoleEnum().getDesc() + ", ")
-        // .append((getRecords().isEmpty() ? IntlRoleEnum.W.getDesc() : getRecords().getLast().getPiece().getRole().getDesc()))
-        .append((getRecords().isEmpty() ? "移动" : getRecords().getLast().getBehavior().getBehaviorEnum().getDesc()))
-        .append("\n");
+                // .append((getRecords().isEmpty() ? IntlRoleEnum.W.getDesc() : getRecords().getLast().getPiece().getRole().getDesc()))
+                .append((getRecords().isEmpty() ? "移动" : getRecords().getLast().getBehavior().getBehaviorEnum().getDesc()))
+                .append("\n");
 
         for (Piece[] pieces : getBoard()) {
             for (Piece piece : pieces) {

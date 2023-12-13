@@ -8,23 +8,25 @@ import com.fsgame.chess.rule.enums.BaseEnum;
  * @Description:
  */
 public enum IntlBehaviorEnum implements BaseEnum<String> {
-      MOVE("走子")
-    , CAPTURE("吃子")
-    , EN_PASSANT("吃过路兵")
-    , CASTLING("王车异位")
-    , PROMOTION("升变")
-    , NOT_MOVE("未移动")
+      MOVE("Move", "走子")
+    , CAPTURE("Capture", "吃子")
+    , EN_PASSANT("EnPassant", "吃过路兵")
+    , CASTLING("Castling", "王车异位")
+    , PROMOTION("Promotion", "升变")
+    , NOT_MOVE("NotMove", "未移动")
     ;
 
+    private final String code;
     private final String desc;
 
-    IntlBehaviorEnum(String desc) {
+    IntlBehaviorEnum(String code, String desc) {
+        this.code = code;
         this.desc = desc;
     }
 
     @Override
     public String getCode() {
-        return this.name();
+        return this.code;
     }
 
     @Override

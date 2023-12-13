@@ -16,6 +16,8 @@ public class IntlChessUtil {
 
     public static final String PACKER_PATH = "com.fsgame.chess.rule.chesspiece.international.";
 
+    public static final String MOVE_BEHAVIOR_PATH = "com.fsgame.chess.rule.chesspiece.international.movespecific.";
+
     public static final int[][] WHITE_K = {{7, 4}};
     public static final int[][] WHITE_Q = {{7, 3}};
     public static final int[][] BLACK_Q = {{0, 3}};
