@@ -60,8 +60,8 @@ public class BoardGraphics extends JPanel {
             System.out.println("不允许移动：" + Arrays.toString(source) + "->" + Arrays.toString(target) );
             return;
         }
-        setPiece(source);
-        setPiece(target);
+        // setPiece(source);
+        // setPiece(target);
         this.revalidate();
         this.repaint();
         System.out.println(board.getRecords().getLast() + Arrays.toString(source) + "->" + Arrays.toString(target));
