@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * @Author: root
@@ -57,17 +56,15 @@ public class BoardGraphics extends JPanel {
 
     private void move(int[] source, int[] target) {
         boolean allowMove = board.move(source, target);
-        String s = "[" + source[0] + ", " + source[1] + "]";
-        String t = "[" + target[0] + ", " + target[1] + "]";
         if (!allowMove) {
-            System.out.println("不允许移动：" + s + "->" + t );
+            System.out.println("不允许移动：" + Arrays.toString(source) + "->" + Arrays.toString(target) );
             return;
         }
         setPiece(source);
         setPiece(target);
         this.revalidate();
         this.repaint();
-        System.out.println(board.getRecords().getLast() + s + "->" + t);
+        System.out.println(board.getRecords().getLast() + Arrays.toString(source) + "->" + Arrays.toString(target));
     }
 
     @Override
