@@ -7,9 +7,10 @@ import com.fsgame.chess.rule.chesspiece.Piece;
 import com.fsgame.chess.rule.chesspiece.PieceMove;
 import com.fsgame.chess.rule.enums.BaseEnum;
 import com.fsgame.chess.rule.enums.international.IntlBehaviorEnum;
-import com.fsgame.chess.rule.enums.international.IntlPieceEnum;
 import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
 import com.fsgame.chess.rule.utils.IntlChessUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -24,6 +25,8 @@ import java.util.Map;
  * @Description:
  */
 public class IntlChessBoard implements Board {
+
+    private static final Logger logger = LoggerFactory.getLogger(IntlChessBoard.class);
 
     private BaseEnum roleEnum;
 
@@ -218,7 +221,7 @@ public class IntlChessBoard implements Board {
 
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                     InvocationTargetException e) {
-                System.out.println("不存在行为实体类：" + behaviorEnum.getCode() + behaviorEnum.getDesc());
+                logger.info("不存在行为实体类：" + behaviorEnum.getCode() + behaviorEnum.getDesc());
             }
         }
     }

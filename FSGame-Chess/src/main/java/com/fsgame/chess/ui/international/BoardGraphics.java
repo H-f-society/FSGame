@@ -5,6 +5,8 @@ import com.fsgame.chess.rule.chesspiece.Piece;
 import com.fsgame.chess.rule.enums.BaseEnum;
 import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
 import com.fsgame.chess.ui.utils.ControlUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +20,8 @@ import java.util.Arrays;
  * @Description:
  */
 public class BoardGraphics extends JPanel {
+
+    private static final Logger logger = LoggerFactory.getLogger(BoardGraphics.class);
 
     private final Board board;
 
@@ -41,7 +45,7 @@ public class BoardGraphics extends JPanel {
                 int x = (int) Math.floor((double) (e.getY() - ControlUtil.PADDING) / ControlUtil.CELLS_SIZE);
                 int y = (int) Math.floor((double) (e.getX() - ControlUtil.PADDING) / ControlUtil.CELLS_SIZE);
 
-                System.out.print("第 " + (clickCount % 2 == 0 ? 0 : 1) + " 点击..");
+                logger.info("第 " + (clickCount % 2 == 0 ? 0 : 1) + " 点击..");
 
                 if (clickCount % 2 == 0) {
                     source = new int[]{x, y};
@@ -56,12 +60,12 @@ public class BoardGraphics extends JPanel {
     private void move(int[] source, int[] target) {
         boolean allowMove = board.move(source, target);
         if (!allowMove) {
-            System.out.println("不允许移动：" + Arrays.toString(source) + "->" + Arrays.toString(target) );
+            logger.info("移动无效：" + Arrays.toString(source) + "->" + Arrays.toString(target) );
             return;
         }
         this.revalidate();
         this.repaint();
-        System.out.println(board.getRecords().getLast() + Arrays.toString(source) + "->" + Arrays.toString(target));
+        logger.info(board.getRecords().getLast() + Arrays.toString(source) + "->" + Arrays.toString(target));
     }
 
     @Override

@@ -24,7 +24,7 @@ public class RightPanel extends JPanel implements ActionListenerObserver {
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        System.out.println("Class B handles event from A");
+
     }
 
     @Override
