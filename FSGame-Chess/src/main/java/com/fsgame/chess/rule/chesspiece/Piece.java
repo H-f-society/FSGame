@@ -1,5 +1,6 @@
 package com.fsgame.chess.rule.chesspiece;
 
+import com.fsgame.chess.rule.chessboard.WalkingRecords;
 import com.fsgame.chess.rule.enums.BaseEnum;
 
 /**
@@ -23,9 +24,11 @@ public interface Piece {
 
     boolean allowMove(int[] coord);
 
-    BaseEnum move(int[] coord);
+    WalkingRecords move(int[] coord);
 
     int stepNum(int[] coord);
 
     int stepNum(int[] source, int[] target);
+
+    int[] getCoord();
 }

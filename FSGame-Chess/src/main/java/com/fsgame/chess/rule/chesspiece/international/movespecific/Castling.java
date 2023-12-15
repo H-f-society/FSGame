@@ -1,6 +1,8 @@
 package com.fsgame.chess.rule.chesspiece.international.movespecific;
 
 import com.fsgame.chess.rule.chessboard.Board;
+import com.fsgame.chess.rule.chessboard.WalkingRecords;
+import com.fsgame.chess.rule.chessboard.WalkingRecordsImpl;
 import com.fsgame.chess.rule.chesspiece.Piece;
 import com.fsgame.chess.rule.enums.international.IntlBehaviorEnum;
 import com.fsgame.chess.rule.enums.international.IntlPieceEnum;
@@ -16,12 +18,8 @@ public class Castling extends AbstractIntlPieceMove {
     private static final IntlPieceEnum KING = IntlPieceEnum.K;
     private static final IntlPieceEnum ROOK = IntlPieceEnum.R;
 
-    public Castling() {
-        super(IntlBehaviorEnum.CASTLING);
-    }
-
     @Override
-    public boolean move(Board board, int[] source, int[] target) {
+    public WalkingRecords move(Board board, int[] source, int[] target) {
         int x = source[0];
         int dire = target[1] - source[1] > 0 ? 1 : -1;
         int[] rookSource = dire == -1 ? new int[]{x, 0} : new int[]{x, 7};
@@ -30,16 +28,15 @@ public class Castling extends AbstractIntlPieceMove {
         Piece rook = board.getPiece(rookSource);
 
         // 基本要求1：起始点为King，目标点为Rook，且途中无障碍
-        setMoveBehavior(IntlBehaviorEnum.NOT_MOVE);
         if (king == null || rook == null) {
-            return false;
+            return null;
         }
         if (!KING.equals(king.getType()) || !ROOK.equals(rook.getType()) || !board.unimpededRoute(source, rookSource)) {
-            return false;
+            return null;
         }
         // 基本要求2: King和Rook均为移动过
         if (king.getStepCount() != 0 || rook.getStepCount() != 0) {
-            return false;
+            return null;
         }
 
         int[] kingCoord = new int[0];
@@ -56,13 +53,18 @@ public class Castling extends AbstractIntlPieceMove {
         }
 
         if (kingCoord.length == 0) {
-            return false;
+            return null;
         }
+        WalkingRecords.Record kingRecord = new WalkingRecords.RecordImpl(king, source.clone(), kingCoord.clone());
+        WalkingRecords.Record rookRecord = new WalkingRecords.RecordImpl(rook, rookSource.clone(), rookCoord.clone());
         board.swap(source, kingCoord);
         board.swap(rookSource, rookCoord);
         rook.updateCoord(rookCoord);
-        setMoveBehavior(IntlBehaviorEnum.CASTLING);
-        return true;
+        return new WalkingRecordsImpl.Builder()
+                .record(kingRecord)
+                .record(rookRecord)
+                .behavior(IntlBehaviorEnum.CASTLING)
+                .build();
     }
 
 }

@@ -2,7 +2,6 @@ package com.fsgame.chess.rule.chesspiece;
 
 import com.fsgame.chess.rule.chessboard.Board;
 import com.fsgame.chess.rule.chessboard.WalkingRecords;
-import com.fsgame.chess.rule.enums.BaseEnum;
 
 /**
  * @Author: root
@@ -11,9 +10,7 @@ import com.fsgame.chess.rule.enums.BaseEnum;
  */
 public interface PieceMove {
 
-    BaseEnum getType();
-
-    boolean move(Board board, int[] source, int[] target);
+    WalkingRecords move(Board board, int[] source, int[] target);
 
     void repentance(WalkingRecords walkingRecords);
 

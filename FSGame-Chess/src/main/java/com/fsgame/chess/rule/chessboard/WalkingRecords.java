@@ -1,88 +1,65 @@
 package com.fsgame.chess.rule.chessboard;
 
 import com.fsgame.chess.rule.chesspiece.Piece;
+import com.fsgame.chess.rule.enums.BaseEnum;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Author: root
- * @Date: 2023/12/4 16:55
+ * @Date: 2023/12/15 14:37
  * @Description:
  */
-public class WalkingRecords {
+public interface WalkingRecords {
 
-    private final int[] source;
+    BaseEnum getBehavior();
 
-    private final int[] target;
+    List<Record> getRecords();
 
-    private final Piece piece;
+    interface Record {
 
-    private final Behavior behavior;
+        Piece piece();
 
-    public WalkingRecords(int[] source, int[] target, Piece piece, Behavior behavior) {
-        this.source = source;
-        this.target = target;
-        this.piece = piece;
-        this.behavior = behavior;
+        int[] source();
+
+        int[] target();
     }
 
-    @Override
-    public String toString() {
-        if (piece == null) {
-            return "";
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append(piece.getRole().getDesc())
-                .append(piece.getType().getDesc())
-                .append(behavior.getBehaviorEnum().getDesc());
-        return sb.toString();
-    }
+    class RecordImpl implements Record {
 
-    public int[] getSource() {
-        return source;
-    }
+        private final Piece piece;
+        private final int[] source;
+        private final int[] target;
 
-    public int[] getTarget() {
-        return target;
-    }
-
-    public Piece getPiece() {
-        return piece;
-    }
-
-    public Behavior getBehavior() {
-        return behavior;
-    }
-
-    public static class Builder {
-        private int[] source;
-
-        private int[] target;
-
-        private Piece piece;
-
-        private Behavior behavior;
-
-        public Builder source(int[] source) {
-            this.source = source;
-            return this;
-        }
-
-        public Builder target(int[] target) {
-            this.target = target;
-            return this;
-        }
-
-        public Builder piece(Piece piece) {
+        public RecordImpl(Piece piece, int[] source, int[] target) {
             this.piece = piece;
-            return this;
+            this.source = source;
+            this.target = target;
         }
 
-        public Builder behavior(Behavior behavior) {
-            this.behavior = behavior;
-            return this;
+        @Override
+        public Piece piece() {
+            return this.piece;
         }
 
-        public WalkingRecords build() {
-            return new WalkingRecords(source, target, piece, behavior);
+        @Override
+        public int[] source() {
+            return this.source;
+        }
+
+        @Override
+        public int[] target() {
+            return this.target;
+        }
+
+        @Override
+        public String toString() {
+            return  piece.getRole().getDesc()
+                    + "-" + piece.getType().getDesc()
+                    + Arrays.toString(piece.getCoord())
+                    + ": " + Arrays.toString(source)
+                    + "->" + Arrays.toString(target);
         }
     }
 }

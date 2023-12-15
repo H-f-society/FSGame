@@ -48,6 +48,11 @@ public abstract class AbstractPiece implements Piece {
         return (String) getType().getCode();
     }
 
+    @Override
+    public int[] getCoord() {
+        return coord;
+    }
+
     protected boolean isMyPiece() {
         return getRole().equals(board.getRoleEnum());
     }

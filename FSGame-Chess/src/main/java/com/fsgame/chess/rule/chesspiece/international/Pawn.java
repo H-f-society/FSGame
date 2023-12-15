@@ -1,6 +1,8 @@
 package com.fsgame.chess.rule.chesspiece.international;
 
 import com.fsgame.chess.rule.chessboard.Board;
+import com.fsgame.chess.rule.chessboard.WalkingRecords;
+import com.fsgame.chess.rule.chessboard.WalkingRecordsImpl;
 import com.fsgame.chess.rule.chesspiece.PieceMove;
 import com.fsgame.chess.rule.chesspiece.international.movespecific.EnPassant;
 import com.fsgame.chess.rule.chesspiece.international.movespecific.Promotion;
@@ -51,25 +53,30 @@ public class Pawn extends AbstractIntlChessPiece {
     }
 
     @Override
-    public BaseEnum move(int[] coord) {
+    public WalkingRecords move(int[] coord) {
         if (!super.allowMove(coord) || !this.allowMove(coord)) {
-            return IntlBehaviorEnum.NOT_MOVE;
+            return null;
         }
         for (PieceMove pieceMove : allowMoveBehaviorList) {
-            if (pieceMove.move(board, this.coord, coord)) {
-                return pieceMove.getType();
+            WalkingRecords walkingRecords = pieceMove.move(board, this.coord, coord);
+            if (walkingRecords != null) {
+                return walkingRecords;
             }
         }
         if (board.getPiece(coord) != null) {
-            return IntlBehaviorEnum.NOT_MOVE;
+            return null;
         }
         // 前面吃子和吃过路兵条件都不满足，那只能向前移动了
         DirectionEnum dire = isMyPiece() ? DirectionEnum.UP : DirectionEnum.DOWN;
         if (dire.equals(DirectionUtil.calcDirection(this.coord, coord))) {
+            WalkingRecords.Record pawnRecord = new WalkingRecords.RecordImpl(this, this.coord.clone(), coord.clone());
             board.swap(this.coord, coord);
             stepCount++;
-            return IntlBehaviorEnum.MOVE;
+            return new WalkingRecordsImpl.Builder()
+                    .record(pawnRecord)
+                    .behavior(IntlBehaviorEnum.MOVE)
+                    .build();
         }
-        return IntlBehaviorEnum.NOT_MOVE;
+        return null;
     }
 }

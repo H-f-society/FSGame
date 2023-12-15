@@ -1,6 +1,8 @@
 package com.fsgame.chess.rule.chesspiece.international;
 
 import com.fsgame.chess.rule.chessboard.Board;
+import com.fsgame.chess.rule.chessboard.WalkingRecords;
+import com.fsgame.chess.rule.chessboard.WalkingRecordsImpl;
 import com.fsgame.chess.rule.chesspiece.AbstractPiece;
 import com.fsgame.chess.rule.chesspiece.PieceMove;
 import com.fsgame.chess.rule.enums.BaseEnum;
@@ -60,21 +62,26 @@ public abstract class AbstractIntlChessPiece extends AbstractPiece {
     }
 
     @Override
-    public BaseEnum move(int[] coord) {
+    public WalkingRecords move(int[] coord) {
         if (!super.allowMove(coord) || !this.allowMove(coord)) {
-            return IntlBehaviorEnum.NOT_MOVE;
+            return null;
         }
         for (PieceMove pieceMove : allowMoveBehaviorList) {
-            if (pieceMove.move(board, this.coord, coord)) {
-                return pieceMove.getType();
+            WalkingRecords walkingRecords = pieceMove.move(board, this.coord, coord);
+            if (walkingRecords != null) {
+                return walkingRecords;
             }
         }
         if (board.getPiece(coord) != null) {
-            return IntlBehaviorEnum.NOT_MOVE;
+            return null;
         }
+        WalkingRecords.Record pieceRecord = new WalkingRecords.RecordImpl(this, this.coord.clone(), coord.clone());
         board.swap(this.coord, coord);
         stepCount++;
-        return IntlBehaviorEnum.MOVE;
+        return new WalkingRecordsImpl.Builder()
+                .record(pieceRecord)
+                .behavior(IntlBehaviorEnum.MOVE)
+                .build();
     }
 
     /**

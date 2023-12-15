@@ -1,6 +1,8 @@
 package com.fsgame.chess.rule.chesspiece.international.movespecific;
 
 import com.fsgame.chess.rule.chessboard.Board;
+import com.fsgame.chess.rule.chessboard.WalkingRecords;
+import com.fsgame.chess.rule.chessboard.WalkingRecordsImpl;
 import com.fsgame.chess.rule.chesspiece.Piece;
 import com.fsgame.chess.rule.enums.international.IntlBehaviorEnum;
 
@@ -11,29 +13,25 @@ import com.fsgame.chess.rule.enums.international.IntlBehaviorEnum;
  */
 public class Capture extends AbstractIntlPieceMove {
 
-    public Capture() {
-        this(IntlBehaviorEnum.CAPTURE);
-    }
-
-    public Capture(IntlBehaviorEnum moveBehavior) {
-        super(moveBehavior);
-    }
-
     @Override
-    public boolean move(Board board, int[] source, int[] target) {
+    public WalkingRecords move(Board board, int[] source, int[] target) {
         Piece sourcePiece = board.getPiece(source);
         Piece targetPiece = board.getPiece(target);
         if (sourcePiece == null || targetPiece == null) {
-            return false;
+            return null;
         }
 
         // 俩棋子不能为同一色
         if (targetPiece != null && sourcePiece.getRole().equals(targetPiece.getRole())) {
-            return false;
+            return null;
         }
 
+        WalkingRecords.Record pieceRecord = new WalkingRecords.RecordImpl(sourcePiece, source.clone(), target.clone());
         board.swap(source, target);
         board.updateBoard(source, null);
-        return true;
+        return new WalkingRecordsImpl.Builder()
+                .record(pieceRecord)
+                .behavior(IntlBehaviorEnum.CAPTURE)
+                .build();
     }
 }

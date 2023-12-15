@@ -107,3 +107,15 @@ LFSGame-Chess/src/main/java/com/fsgame/chess/IntlChessDesktopApplication.java,4
 TFSGame-Chess/src/main/java/com/fsgame/chess/web/controller/SocketTestController.java,3\8\389f2d78d719a96970fce43cd0d3f08b24012b6e
 x
 HFSGame-Chess/src/main/java/com/fsgame/chess/web/socket/ChessMessage.java,1\1\1162e239ef75e0db690c70c9c34a2adac16ed53e
+x
+HFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/Records.java,9\a\9a53810642e605724e788c9e0c88acfdea267216
+~
+NFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/WalkingRecord.java,c\b\cbae548b861a2b539552c87680454e570417b66c
+
+OFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/WalkingRecorda.java,8\0\807218b2f4df051aab419cbff7cec2125976614e
+‘
+aFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/international/IntlWalkingRecords.java,c\5\c5f77b7cb7ec3bc2f90448e8c4c421676fdedcaa
+‘
+aFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/international/WalkingRecordsImpl.java,7\3\7324617d1009e81f1acdab76158bc515d7425843
+ƒ
+SFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/WalkingRecordsImpl.java,8\d\8dac2fa5f30feb4a359184658d325ad61a74989a

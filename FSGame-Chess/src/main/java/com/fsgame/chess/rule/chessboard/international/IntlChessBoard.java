@@ -1,6 +1,5 @@
 package com.fsgame.chess.rule.chessboard.international;
 
-import com.fsgame.chess.rule.chessboard.Behavior;
 import com.fsgame.chess.rule.chessboard.Board;
 import com.fsgame.chess.rule.chessboard.WalkingRecords;
 import com.fsgame.chess.rule.chesspiece.Piece;
@@ -14,10 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author: root
@@ -128,7 +124,8 @@ public class IntlChessBoard implements Board {
         }
         if (!getRecords().isEmpty()) {
             WalkingRecords walkingRecords = getRecords().getLast();
-            Piece lastPiece = walkingRecords.getPiece();
+            List<WalkingRecords.Record> records = walkingRecords.getRecords();
+            Piece lastPiece = records.get(0).piece();
             return !piece.getRole().equals(lastPiece.getRole());
         }
         return true;
@@ -142,17 +139,12 @@ public class IntlChessBoard implements Board {
             return false;
         }
 
-        BaseEnum<?> behaviorEnum = piece.move(target);
-        if (IntlBehaviorEnum.NOT_MOVE.equals(behaviorEnum)) {
+
+        WalkingRecords walkingRecords = piece.move(target);
+        if (walkingRecords == null) {
             return false;
         }
         piece.updateCoord(target);
-        WalkingRecords walkingRecords = new WalkingRecords.Builder()
-                .source(source)
-                .target(target)
-                .piece(getPiece(target) == null ? piece : getPiece(target))
-                .behavior(new Behavior(piece, targetPiece, behaviorEnum))
-                .build();
         walkingRecordsStack.add(walkingRecords);
         return true;
     }
@@ -234,10 +226,10 @@ public class IntlChessBoard implements Board {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("我方为：" + getRoleEnum().getDesc() + ", ")
-                // .append((getRecords().isEmpty() ? IntlRoleEnum.W.getDesc() : getRecords().getLast().getPiece().getRole().getDesc()))
-                .append((getRecords().isEmpty() ? "移动" : getRecords().getLast().getBehavior().getBehaviorEnum().getDesc()))
-                .append("\n");
+        // sb.append("我方为：" + getRoleEnum().getDesc() + ", ")
+        //         // .append((getRecords().isEmpty() ? IntlRoleEnum.W.getDesc() : getRecords().getLast().getPiece().getRole().getDesc()))
+        //         .append((getRecords().isEmpty() ? "移动" : getRecords().getLast().getBehavior().getBehaviorEnum().getDesc()))
+        //         .append("\n");
 
         for (Piece[] pieces : getBoard()) {
             for (Piece piece : pieces) {
