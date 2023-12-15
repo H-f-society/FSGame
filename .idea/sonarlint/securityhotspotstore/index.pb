@@ -119,3 +119,5 @@ aFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/international/IntlW
 aFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/international/WalkingRecordsImpl.java,7\3\7324617d1009e81f1acdab76158bc515d7425843
 ƒ
 SFSGame-Chess/src/main/java/com/fsgame/chess/rule/chessboard/WalkingRecordsImpl.java,8\d\8dac2fa5f30feb4a359184658d325ad61a74989a
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
