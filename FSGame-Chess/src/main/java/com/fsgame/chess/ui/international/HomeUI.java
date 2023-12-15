@@ -1,6 +1,6 @@
 package com.fsgame.chess.ui.international;
 
-import com.fsgame.chess.ui.utils.ControlUtil;
+import com.fsgame.chess.ui.utils.PanelStyleUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,8 +12,8 @@ import java.awt.*;
  */
 public class HomeUI extends JFrame {
 
-    public static final int UI_WIDTH = ControlUtil.CELLS_SIZE * 8;
-    public static final int UI_HEIGHT = ControlUtil.CELLS_SIZE * 6;
+    public static final int UI_WIDTH = PanelStyleUtil.CELLS_SIZE * 8;
+    public static final int UI_HEIGHT = PanelStyleUtil.CELLS_SIZE * 6;
 
     LeftPanel leftPanel = new LeftPanel();
     RightPanel rightPanel = new RightPanel();

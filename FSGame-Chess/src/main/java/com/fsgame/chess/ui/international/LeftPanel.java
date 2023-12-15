@@ -3,7 +3,7 @@ package com.fsgame.chess.ui.international;
 import cn.hutool.core.io.FileUtil;
 import com.fsgame.chess.rule.enums.BaseEnum;
 import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
-import com.fsgame.chess.ui.utils.ControlUtil;
+import com.fsgame.chess.ui.utils.PanelStyleUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,7 @@ public class LeftPanel extends JPanel {
 
 
     private BaseEnum role = IntlRoleEnum.W;
-    private String configPath = FileUtil.ls(ControlUtil.PIECE_IMG)[0].getPath();
+    private String configPath = FileUtil.ls(PanelStyleUtil.PIECE_IMG)[0].getPath();
 
     private ActionListenerObserver observer;
 
@@ -34,7 +34,7 @@ public class LeftPanel extends JPanel {
         initConfigRadio();
         initControl();
 
-        this.setBackground(ControlUtil.CELLS_W);
+        this.setBackground(PanelStyleUtil.CELLS_W);
         this.setPreferredSize(new Dimension((int)(HomeUI.UI_WIDTH * 0.3), HomeUI.UI_HEIGHT));
 
         this.setLayout(new FlowLayout());
@@ -60,7 +60,7 @@ public class LeftPanel extends JPanel {
     private void initConfigRadio() {
 
         this.setLayout(new BorderLayout());
-        File[] dirs = FileUtil.ls(ControlUtil.PIECE_IMG);
+        File[] dirs = FileUtil.ls(PanelStyleUtil.PIECE_IMG);
         ButtonGroup group = new ButtonGroup();
         for (File config : dirs) {
             String name = config.getName();

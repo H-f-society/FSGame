@@ -89,3 +89,17 @@ LFSGame-Chess/src/main/java/com/fsgame/chess/ui/international/RightPanel.java,a
 XFSGame-Chess/src/main/java/com/fsgame/chess/ui/international/ActionListenerObserver.java,1\f\1f57e1709ce6766b1340a19e6119aeb80598e799
 
 OFSGame-Chess/src/main/java/com/fsgame/chess/ui/international/BoardGraphics.java,e\a\ea6521605eaf7b8f591fd33c0a7e09198744a890
+x
+HFSGame-Chess/src/main/java/com/fsgame/chess/ChessDesktopApplication.java,c\d\cd08290f58f31c9c12ce5c722ed1b772bd2f357b
+x
+HFSGame-Chess/src/main/java/com/fsgame/chess/ui/utils/PanelStyleUtil.java,f\1\f10850a275cd51c6cf2fa2939dac02d2741ae759
+{
+KFSGame-Chess/src/main/java/com/fsgame/chess/web/config/WebSocketConfig.java,8\a\8a7d422853ad9427e116ccefd12d9d04526a2fa7
+{
+KFSGame-Chess/src/main/java/com/fsgame/chess/web/socket/WebSocketServer.java,1\f\1f7c25c45cc130facbe5f0d990caa13675773419
+y
+IFSGame-Chess/src/main/java/com/fsgame/chess/web/socket/SocketMessage.java,7\7\7761d4e28fce7b52fac000564e488524f28b2e9b
+s
+CFSGame-Chess/src/main/java/com/fsgame/chess/web/socket/Message.java,f\9\f9827aa1d9b35e6bc4cb2e9306fb6d69c543a5c7
+|
+LFSGame-Chess/src/main/java/com/fsgame/chess/IntlChessDesktopApplication.java,4\d\4db8819770ab8eaf85d3eaaeecdf9d20d66ec048

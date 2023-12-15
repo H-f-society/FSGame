@@ -1,6 +1,6 @@
 spring:
   application:
-    name: game
+    name: chess
 
 server:
   port: 80

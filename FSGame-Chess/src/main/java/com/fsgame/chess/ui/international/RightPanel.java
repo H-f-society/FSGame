@@ -2,7 +2,7 @@ package com.fsgame.chess.ui.international;
 
 import cn.hutool.core.io.FileUtil;
 import com.fsgame.chess.rule.enums.international.IntlRoleEnum;
-import com.fsgame.chess.ui.utils.ControlUtil;
+import com.fsgame.chess.ui.utils.PanelStyleUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,10 +17,9 @@ import java.io.File;
 public class RightPanel extends JPanel implements ActionListenerObserver {
 
     public RightPanel() {
-        this.setBackground(ControlUtil.CELLS_B);
+        this.setBackground(PanelStyleUtil.CELLS_B);
         this.setPreferredSize(new Dimension((int)(HomeUI.UI_WIDTH * 0.7), HomeUI.UI_HEIGHT));
     }
-
 
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -32,7 +31,7 @@ public class RightPanel extends JPanel implements ActionListenerObserver {
         this.removeAll();
         this.setLayout(new FlowLayout());
 
-        String piecePath = ControlUtil.PIECE_IMG + configPath + "/";
+        String piecePath = PanelStyleUtil.PIECE_IMG + configPath + "/";
 
         initPieceImg(FileUtil.ls(piecePath + IntlRoleEnum.W.getCode()));
         initPieceImg(FileUtil.ls(piecePath + IntlRoleEnum.B.getCode()));
@@ -44,7 +43,7 @@ public class RightPanel extends JPanel implements ActionListenerObserver {
     private void initPieceImg(File[] files) {
         for (File file : files) {
             Image image = Toolkit.getDefaultToolkit().getImage(file.getPath());
-            ImageIcon img = new ImageIcon(image.getScaledInstance(ControlUtil.CELLS_SIZE, ControlUtil.CELLS_SIZE, Image.SCALE_SMOOTH));
+            ImageIcon img = new ImageIcon(image.getScaledInstance(PanelStyleUtil.CELLS_SIZE, PanelStyleUtil.CELLS_SIZE, Image.SCALE_SMOOTH));
             this.add(new JLabel(img));
         }
     }
