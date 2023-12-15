@@ -9,7 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>FSGame-chess</artifactId>
+    <groupId>com.fsgame</groupId>
+    <artifactId>FSGame-Chess</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>chess-core</module>
+        <module>chess-desktop</module>
+        <module>chess-webonline</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -17,19 +26,5 @@
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
     </properties>
 
-    <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>2.6.7</version>
-        </dependency>
-
-    </dependencies>
 
 </project>
