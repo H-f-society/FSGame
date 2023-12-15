@@ -17,6 +17,7 @@ import java.io.File;
 public class RightPanel extends JPanel implements ActionListenerObserver {
 
     public RightPanel() {
+        showPieceImg("chess_01");
         this.setBackground(PanelStyleUtil.CELLS_B);
         this.setPreferredSize(new Dimension((int)(HomeUI.UI_WIDTH * 0.7), HomeUI.UI_HEIGHT));
     }

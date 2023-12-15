@@ -19,7 +19,7 @@ public class PanelStyleUtil {
     public static final Color CELLS_W = new Color(199, 196, 153);
     public static final Color CELLS_B = new Color(127, 74, 56);
 
-    private static final String PIECE_IMG_PATH = "FSGame-Chess/src/main/resources/images/chess_01/";
+    private static final String PIECE_IMG_PATH = "FSGame-Chess/chess-desktop/src/main/resources/international/images/chess_01/";
 
     public static final String PIECE_IMG = "international/images/";
 
