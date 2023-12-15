@@ -22,18 +22,6 @@
         <dependency>
             <groupId>com.fsgame</groupId>
             <artifactId>chess-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fsgame</groupId>
-            <artifactId>chess-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fsgame</groupId>
-            <artifactId>chess-core</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
