@@ -226,10 +226,9 @@ public class IntlChessBoard implements Board {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        // sb.append("我方为：" + getRoleEnum().getDesc() + ", ")
-        //         // .append((getRecords().isEmpty() ? IntlRoleEnum.W.getDesc() : getRecords().getLast().getPiece().getRole().getDesc()))
-        //         .append((getRecords().isEmpty() ? "移动" : getRecords().getLast().getBehavior().getBehaviorEnum().getDesc()))
-        //         .append("\n");
+        if (!getRecords().isEmpty()) {
+            sb.append(getRecords().getLast().getRecords()).append("\n");
+        }
 
         for (Piece[] pieces : getBoard()) {
             for (Piece piece : pieces) {

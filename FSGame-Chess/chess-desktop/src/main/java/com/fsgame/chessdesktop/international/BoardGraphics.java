@@ -3,6 +3,7 @@ package com.fsgame.chessdesktop.international;
 import com.fsgame.chesscore.chessboard.Board;
 import com.fsgame.chesscore.chesspiece.Piece;
 import com.fsgame.chesscore.enums.BaseEnum;
+import com.fsgame.chesscore.enums.international.IntlBehaviorEnum;
 import com.fsgame.chesscore.enums.international.IntlRoleEnum;
 import com.fsgame.chessdesktop.utils.PanelStyleUtil;
 import org.slf4j.Logger;
@@ -60,12 +61,12 @@ public class BoardGraphics extends JPanel {
     private void move(int[] source, int[] target) {
         boolean allowMove = board.move(source, target);
         if (!allowMove) {
-            logger.info("移动无效：" + Arrays.toString(source) + "->" + Arrays.toString(target) );
+            logger.info(IntlBehaviorEnum.NOT_MOVE.getDesc() + ": " + Arrays.toString(source) + "->" + Arrays.toString(target) );
             return;
         }
         this.revalidate();
         this.repaint();
-        logger.info(board.getRecords().getLast() + Arrays.toString(source) + "->" + Arrays.toString(target));
+        logger.info(board.getRecords().getLast().getBehavior().getDesc() + ": " + board.getRecords().getLast().getRecords().toString());
     }
 
     @Override

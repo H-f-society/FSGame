@@ -1,0 +1,13 @@
+
+M
+java:S1172!"0Remove this unused method parameter "valueType".(”É˜Í8ùÅ‚ÜÆ1
+h
+java:S2133""FRemove this object instantiation and use "ChessMessage.class" instead.(àŸ¯—ùÿÿÿÿ8à©è’Ç1
+]
+java:S1854'";Remove this useless assignment to local variable "content".(ââÈ‰üÿÿÿÿ8ùÅ‚ÜÆ1
+K
+java:S1172%".Remove this unused method parameter "session".(èàÂä8ùÅ‚ÜÆ1
+N
+java:S1481'",Remove this unused "content" local variable.(ââÈ‰üÿÿÿÿ8ùÅ‚ÜÆ1
+L
+java:S1068"*Remove this unused "logger" private field.(ßïıÿÿÿÿ8ùÅ‚ÜÆ1
