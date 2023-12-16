@@ -22,7 +22,7 @@ public class Capture extends AbstractIntlPieceMove {
         }
 
         // 俩棋子不能为同一色
-        if (targetPiece != null && sourcePiece.getRole().equals(targetPiece.getRole())) {
+        if (sourcePiece.getRole().equals(targetPiece.getRole())) {
             return null;
         }
 
