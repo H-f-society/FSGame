@@ -333,3 +333,6 @@ Q.idea/sonarlint/securityhotspotstore/6/e/6e9644ddf83ab52f39902ecdbfdf4118285ac4
 Q.idea/sonarlint/securityhotspotstore/5/6/563aea8f3504e1657750cf5fe71b8b35d20f334e,6\e\6e6a0a4277de0daf3e700562d6d5b15101d707a4
 w
 G.idea/sonarlint/issuestore/7/9/790068a9a25ec38a948df3f1c3c4d387c7854ed4,7\5\75b419dab06d3b7ea7de2af54252574572fb1fd9
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
