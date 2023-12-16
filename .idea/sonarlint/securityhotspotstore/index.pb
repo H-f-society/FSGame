@@ -137,8 +137,6 @@ Q.idea/sonarlint/securityhotspotstore/b/b/bbf202272a96de5cd6b6828ffdc55fb3ce4528
 Q.idea/sonarlint/securityhotspotstore/9/0/909762385fc6eb20f922a91c6865741308b57f2c,e\0\e0ea4108d198a3d2e4e87c48063db9d2bffad652
 w
 G.idea/sonarlint/issuestore/9/0/909762385fc6eb20f922a91c6865741308b57f2c,c\e\ce7799643a95553c6bee1d403d6cb738907a7f2c
-~
-NFSGame-Chess/chess-webonline/src/main/resources/ChessWebonlineApplication.java,2\b\2b10fc64da6cc8f1ff7569da10e8d8f0fc919d08
 “
 cFSGame-Chess/chess-webonline/src/main/java/com/fsgame/chesswebonline/ChessWebonlineApplication.java,7\9\790068a9a25ec38a948df3f1c3c4d387c7854ed4
 “
