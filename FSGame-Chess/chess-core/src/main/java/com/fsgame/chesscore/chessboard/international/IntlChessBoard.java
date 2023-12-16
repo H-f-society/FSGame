@@ -145,7 +145,7 @@ public class IntlChessBoard implements Board {
             return false;
         }
         piece.updateCoord(target);
-        walkingRecordsStack.add(walkingRecords);
+        addRecords(walkingRecords);
         return true;
     }
 

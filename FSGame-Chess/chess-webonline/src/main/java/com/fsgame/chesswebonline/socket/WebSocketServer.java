@@ -1,42 +1,123 @@
 package com.fsgame.chesswebonline.socket;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketSession;
-import org.springframework.web.socket.handler.TextWebSocketHandler;
+import org.springframework.stereotype.Component;
 
+import javax.websocket.*;
+import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author: root
  * @Date: 2023/12/15 9:12
  * @Description:
  */
-@ServerEndpoint("/websocketServer")
-public class WebSocketServer extends TextWebSocketHandler {
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
+@ServerEndpoint("/websocket/{userId}")
+@Component
+public class WebSocketServer {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private static final Logger log = LoggerFactory.getLogger(WebSocketServer.class);
 
-    @Override
-    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        // 将收到的 JSON 转换为泛型对象
-        Message<?> msg = convertToMyMessage(message, Message.class);
+    /**
+     * 当前在线连接数
+     */
+    private static AtomicInteger onlineCount = new AtomicInteger(0);
 
-        // 处理消息
-        handleMyMessage(msg, session);
+    /**
+     * 用来存放每个客户端对应的 WebSocketServer 对象
+     */
+    private static ConcurrentHashMap<String, WebSocketServer> webSocketMap = new ConcurrentHashMap<>();
+
+    /**
+     * 与某个客户端的连接会话，需要通过它来给客户端发送数据
+     */
+    private Session session;
+
+    /**
+     * 接收 userId
+     */
+    private String userId = "";
+
+    /**
+     * 连接建立成功调用的方法
+     */
+    @OnOpen
+    public void onOpen(Session session, @PathParam("userId") String userId) {
+        this.session = session;
+        this.userId = userId;
+        if (webSocketMap.containsKey(userId)) {
+            webSocketMap.remove(userId);
+            webSocketMap.put(userId, this);
+        } else {
+            webSocketMap.put(userId, this);
+            addOnlineCount();
+        }
+        log.info("用户连接:" + userId + ",当前在线人数为:" + getOnlineCount());
+        try {
+            sendMessage("连接成功！");
+        } catch (IOException e) {
+            log.error("用户:" + userId + ",网络异常!!!!!!");
+        }
     }
 
-    private <T> Message<T> convertToMyMessage(TextMessage message, Class<T> valueType) throws JsonProcessingException {
-        return (Message<T>) objectMapper.readValue(message.getPayload(), new ChessMessage().getClass());
+    /**
+     * 连接关闭调用的方法
+     */
+    @OnClose
+    public void onClose() {
+        if (webSocketMap.containsKey(userId)) {
+            webSocketMap.remove(userId);
+            subOnlineCount();
+        }
+        log.info("用户退出:" + userId + ",当前在线人数为:" + getOnlineCount());
     }
 
-    private <T> void handleMyMessage(Message<T> msg, WebSocketSession session) {
-        // 处理泛型消息
-        T content = msg.getMessage();
-        // 具体的处理逻辑...
+    /**
+     * 收到客户端消息后调用的方法
+     *
+     * @param message 客户端发送过来的消息
+     */
+    @OnMessage
+    public void onMessage(String message, Session session) {
+        try {
+            sendMessage("server say too: " + message);
+        } catch (IOException e) {
+            log.error("用户:" + userId + ",网络异常!!!!!!");
+        }
+        log.info(message);
+    }
+
+    /**
+     * 发生错误时调用
+     *
+     * @param session
+     * @param error
+     */
+    @OnError
+    public void onError(Session session, Throwable error) {
+        log.error("用户错误:" + this.userId + ",原因:" + error.getMessage());
+    }
+
+    /**
+     * 实现服务器主动推送
+     */
+    public void sendMessage(String message) throws IOException {
+        this.session.getBasicRemote().sendText(message);
+    }
+
+    public static synchronized AtomicInteger getOnlineCount() {
+        return onlineCount;
+    }
+
+    public static synchronized void addOnlineCount() {
+        WebSocketServer.onlineCount.getAndIncrement();
+    }
+
+    public static synchronized void subOnlineCount() {
+        WebSocketServer.onlineCount.getAndDecrement();
     }
 }
