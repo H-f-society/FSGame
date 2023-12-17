@@ -8,116 +8,58 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * @Author: root
  * @Date: 2023/12/15 9:12
  * @Description:
  */
-@ServerEndpoint("/websocket/{userId}")
+@ServerEndpoint("/websocket/{sessionId}")
 @Component
 public class WebSocketServer {
 
-    private static final Logger log = LoggerFactory.getLogger(WebSocketServer.class);
+    private static final Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
-    /**
-     * 当前在线连接数
-     */
-    private static AtomicInteger onlineCount = new AtomicInteger(0);
-
-    /**
-     * 用来存放每个客户端对应的 WebSocketServer 对象
-     */
-    private static ConcurrentHashMap<String, WebSocketServer> webSocketMap = new ConcurrentHashMap<>();
-
-    /**
-     * 与某个客户端的连接会话，需要通过它来给客户端发送数据
-     */
+    private static final CopyOnWriteArraySet<WebSocketServer> webSocketSet = new CopyOnWriteArraySet<>();
     private Session session;
+    private String sessionId;
 
-    /**
-     * 接收 userId
-     */
-    private String userId = "";
-
-    /**
-     * 连接建立成功调用的方法
-     */
     @OnOpen
-    public void onOpen(Session session, @PathParam("userId") String userId) {
+    public void onOpen(Session session, @PathParam("sessionId") String sessionId) {
         this.session = session;
-        this.userId = userId;
-        if (webSocketMap.containsKey(userId)) {
-            webSocketMap.remove(userId);
-            webSocketMap.put(userId, this);
-        } else {
-            webSocketMap.put(userId, this);
-            addOnlineCount();
-        }
-        log.info("用户连接:" + userId + ",当前在线人数为:" + getOnlineCount());
-        try {
-            sendMessage("连接成功！");
-        } catch (IOException e) {
-            log.error("用户:" + userId + ",网络异常!!!!!!");
-        }
+        this.sessionId = sessionId;
+        webSocketSet.add(this);
+        logger.info("有新连接加入，当前在线人数为：{}", webSocketSet.size());
     }
 
-    /**
-     * 连接关闭调用的方法
-     */
     @OnClose
     public void onClose() {
-        if (webSocketMap.containsKey(userId)) {
-            webSocketMap.remove(userId);
-            subOnlineCount();
-        }
-        log.info("用户退出:" + userId + ",当前在线人数为:" + getOnlineCount());
+        webSocketSet.remove(this);
+        logger.info("有连接关闭，当前在线人数为：{}", webSocketSet.size());
     }
 
-    /**
-     * 收到客户端消息后调用的方法
-     *
-     * @param message 客户端发送过来的消息
-     */
     @OnMessage
-    public void onMessage(String message, Session session) {
-        try {
-            sendMessage("server say too: " + message);
-        } catch (IOException e) {
-            log.error("用户:" + userId + ",网络异常!!!!!!");
-        }
-        log.info(message);
+    public void onMessage(String message) {
+        logger.info("收到客户端消息：{}", message);
+        broadcast(message);
     }
 
-    /**
-     * 发生错误时调用
-     *
-     * @param session
-     * @param error
-     */
     @OnError
     public void onError(Session session, Throwable error) {
-        log.error("用户错误:" + this.userId + ",原因:" + error.getMessage());
+        logger.error("发生错误", error);
     }
 
-    /**
-     * 实现服务器主动推送
-     */
-    public void sendMessage(String message) throws IOException {
-        this.session.getBasicRemote().sendText(message);
-    }
-
-    public static synchronized AtomicInteger getOnlineCount() {
-        return onlineCount;
-    }
-
-    public static synchronized void addOnlineCount() {
-        WebSocketServer.onlineCount.getAndIncrement();
-    }
-
-    public static synchronized void subOnlineCount() {
-        WebSocketServer.onlineCount.getAndDecrement();
+    private void broadcast(String message) {
+        for (WebSocketServer client : webSocketSet) {
+            try {
+                // 使用相同的sessionId或其他标识符判断是否属于同一组
+                if (this.sessionId.equals(client.sessionId)) {
+                    client.session.getBasicRemote().sendText(message);
+                }
+            } catch (IOException e) {
+                logger.error("发生错误", e);
+            }
+        }
     }
 }

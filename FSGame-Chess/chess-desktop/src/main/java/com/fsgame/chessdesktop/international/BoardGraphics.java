@@ -46,7 +46,7 @@ public class BoardGraphics extends JPanel {
                 int x = (int) Math.floor((double) (e.getY() - PanelStyleUtil.PADDING) / PanelStyleUtil.CELLS_SIZE);
                 int y = (int) Math.floor((double) (e.getX() - PanelStyleUtil.PADDING) / PanelStyleUtil.CELLS_SIZE);
 
-                logger.info("第 " + (clickCount % 2 == 0 ? 0 : 1) + " 点击..");
+                logger.info("第 {} 点击... ", clickCount % 2 == 0 ? 0 : 1);
 
                 if (clickCount % 2 == 0) {
                     source = new int[]{x, y};
@@ -61,12 +61,12 @@ public class BoardGraphics extends JPanel {
     private void move(int[] source, int[] target) {
         boolean allowMove = board.move(source, target);
         if (!allowMove) {
-            logger.info(IntlBehaviorEnum.NOT_MOVE.getDesc() + ": " + Arrays.toString(source) + "->" + Arrays.toString(target) );
+            logger.info("{}: {} -> {}", IntlBehaviorEnum.NOT_MOVE.getDesc(), Arrays.toString(source), Arrays.toString(target));
             return;
         }
         this.revalidate();
         this.repaint();
-        logger.info(board.getRecords().getLast().getBehavior().getDesc() + ": " + board.getRecords().getLast().getRecords().toString());
+        logger.info("{}: {}", board.getRecords().getLast().getBehavior().getDesc(), board.getRecords().getLast().getRecords().toString());
     }
 
     @Override

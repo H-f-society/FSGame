@@ -8,13 +8,20 @@ import com.fsgame.chesscore.chessboard.WalkingRecords;
  * @Description:
  */
 public class ChessMessage implements Message<WalkingRecords>{
-    @Override
-    public WalkingRecords getMessage() {
-        return null;
+
+    private WalkingRecords walkingRecords;
+
+    public ChessMessage(WalkingRecords walkingRecords) {
+        this.walkingRecords = walkingRecords;
     }
 
     @Override
-    public void setMessage(WalkingRecords message) {
+    public WalkingRecords getMessage() {
+        return walkingRecords;
+    }
 
+    @Override
+    public void setMessage(WalkingRecords walkingRecords) {
+        this.walkingRecords = walkingRecords;
     }
 }
