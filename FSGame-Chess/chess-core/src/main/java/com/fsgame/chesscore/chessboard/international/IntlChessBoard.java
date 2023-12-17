@@ -134,11 +134,9 @@ public class IntlChessBoard implements Board {
     @Override
     public boolean move(int[] source, int[] target) {
         Piece piece = getPiece(source);
-        Piece targetPiece = getPiece(target);
         if (piece == null || !allowMove(source)) {
             return false;
         }
-
 
         WalkingRecords walkingRecords = piece.move(target);
         if (walkingRecords == null) {
@@ -202,7 +200,6 @@ public class IntlChessBoard implements Board {
         for (BaseEnum behaviorEnum : IntlBehaviorEnum.values()) {
             try {
 
-                // 使用反射加载类
                 Class<?> clazz = Class.forName(IntlChessUtil.MOVE_BEHAVIOR_PATH + behaviorEnum.getCode());
                 if (clazz == null) {
                     continue;
@@ -213,7 +210,7 @@ public class IntlChessBoard implements Board {
 
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                     InvocationTargetException e) {
-                logger.info("不存在行为实体类：" + behaviorEnum.getCode() + behaviorEnum.getDesc());
+                logger.info("不存在行为实体类：{} {}", behaviorEnum.getCode(), behaviorEnum.getDesc());
             }
         }
     }

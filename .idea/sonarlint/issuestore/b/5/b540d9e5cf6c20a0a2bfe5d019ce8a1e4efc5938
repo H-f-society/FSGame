@@ -16,10 +16,4 @@ java:S37405"/Provide the parametrized type for this generic.(´Ü—óùÿÿÿÿ8ºÇêïÆ1
 Q
 java:S37405"/Provide the parametrized type for this generic.(´Ü—óùÿÿÿÿ8ºÇêïÆ1
 M
-java:S3740Ê"/Provide the parametrized type for this generic.(òŸ¾‡8ºÇêïÆ1
-]
-java:S1854‰"?Remove this useless assignment to local variable "targetPiece".(¬ÚÒ”8‘ÈêïÆ1
-N
-java:S1481‰"0Remove this unused "targetPiece" local variable.(¬ÚÒ”8“ÈêïÆ1
-d
-java:S3457Ø"AFormat specifiers should be used instead of string concatenation.(Ö®”ûÿÿÿÿ8™ÈêïÆ1
+java:S3740È"/Provide the parametrized type for this generic.(òŸ¾‡8ºÇêïÆ1
