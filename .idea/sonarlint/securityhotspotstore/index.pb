@@ -55,8 +55,6 @@ XFSGame-Chess/chess-core/src/main/java/com/fsgame/chesscore/chesspiece/AbstractP
 YFSGame-Chess/chess-core/src/main/java/com/fsgame/chesscore/chessboard/WalkingRecords.java,2\d\2debf57fc3460fbfeb1205d916193282c31fb64b
 ó
 gFSGame-Chess/chess-core/src/main/java/com/fsgame/chesscore/chessboard/international/IntlChessBoard.java,b\5\b540d9e5cf6c20a0a2bfe5d019ce8a1e4efc5938
-É
-SFSGame-Chess/chess-core/src/main/java/com/fsgame/chesscore/chessboard/Behavior.java,e\e\ee8ae979775460c62ae821f0d1d03dcd4513d3b6
 ´
 {FSGame-Chess/chess-core/src/main/java/com/fsgame/chesscore/chesspiece/international/movespecific/AbstractIntlPieceMove.java,3\e\3e6e527eb055aee0efe87d8212e638a872607386
 ù
@@ -151,10 +149,6 @@ Q.idea/sonarlint/securityhotspotstore/e/3/e36d3b35b0aa033dfcf067b2cd16117a306b1e
 Q.idea/sonarlint/securityhotspotstore/2/0/206c78ed9f299d143b1d236c732266bbaa24f114,7\6\761d2c64258776d9b8d143d7b42d996d2a493104
 Å
 Q.idea/sonarlint/securityhotspotstore/b/0/b0bb0a26d88d16d2e82502fe47e034e248a527a2,a\b\abff979ab89f5a1c300ea665b38e61345dcf9043
-Å
-Q.idea/sonarlint/securityhotspotstore/2/b/2b10fc64da6cc8f1ff7569da10e8d8f0fc919d08,6\7\679466f91bc160ecbc739b066463938bc0a26999
-w
-G.idea/sonarlint/issuestore/2/b/2b10fc64da6cc8f1ff7569da10e8d8f0fc919d08,4\8\48e0e917628bd0200ea747fdefe74245deda2394
 w
 G.idea/sonarlint/issuestore/2/0/206c78ed9f299d143b1d236c732266bbaa24f114,5\a\5a4e1a1f41aa196916beeccefd89d3f93aef8162
 Å

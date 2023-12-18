@@ -24,11 +24,19 @@ public class IntlChessBoard implements Board {
 
     private static final Logger logger = LoggerFactory.getLogger(IntlChessBoard.class);
 
-    private BaseEnum roleEnum;
+    private final BaseEnum roleEnum;
 
     private final Piece[][] board = new Piece[8][8];
 
+    /**
+     * 记录双方move的每一步棋子，主要还是用来悔棋用, walkingRecordsStack = ctrl + z
+     */
     private final Deque<WalkingRecords> walkingRecordsStack = new LinkedList<>();
+
+    /**
+     * 记录悔棋回退的每一步，恢复悔棋用, regretWalkingRecordsStack = ctrl + y
+     */
+    private final Deque<WalkingRecords> regretWalkingRecordsStack = new LinkedList<>();
 
     private final Map<String, PieceMove> pieceMoveBehavior = new HashMap<>();
 
