@@ -1,6 +1,10 @@
+server:
+  port: 80
+
 spring:
   application:
     name: chess
+  rsocket:
+    server:
+      port: 7000
 
-server:
-  port: 80

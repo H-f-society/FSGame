@@ -21,7 +21,6 @@ public class WalkingRecordsImpl implements WalkingRecords {
         this.records = records;
     }
 
-
     @Override
     public BaseEnum getBehavior() {
         return behavior;

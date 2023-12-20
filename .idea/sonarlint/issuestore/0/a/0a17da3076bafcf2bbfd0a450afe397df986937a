@@ -1,17 +1,17 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(¿»èùÿÿÿÿ8‹šÜçÆ1
+java:S3740"/Provide the parametrized type for this generic.(¿»èùÿÿÿÿ8‹šÜçÆ1
 L
-java:S37402"/Provide the parametrized type for this generic.(ã¶ë’8‹šÜçÆ1
+java:S37401"/Provide the parametrized type for this generic.(ã¶ë’8‹šÜçÆ1
 L
-java:S3740T"/Provide the parametrized type for this generic.(Óå À8‹šÜçÆ1
+java:S3740S"/Provide the parametrized type for this generic.(Óå À8‹šÜçÆ1
 H
-java:S1948"&Make "role" transient or serializable.(¿»èùÿÿÿÿ8•šÜçÆ1
+java:S1948"&Make "role" transient or serializable.(¿»èùÿÿÿÿ8•šÜçÆ1
 L
 java:S1948"*Make "observer" transient or serializable.(±çĞøıÿÿÿÿ8•šÜçÆ1
 {
-java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8•¯ÿñÅ1
+java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8ôÌ×ßÇ1
 U
-java:S11172"8Rename "role" which hides the field declared at line 20.(ã¶ë’8—¯ÿñÅ1
+java:S11171"8Rename "role" which hides the field declared at line 19.(ã¶ë’8—¯ÿñÅ1
 I
-java:S16024",Remove useless curly braces around statement(´À‘¹8˜¯ÿñÅ1
+java:S16023",Remove useless curly braces around statement(´À‘¹8˜¯ÿñÅ1

@@ -204,8 +204,6 @@ Q.idea/sonarlint/securityhotspotstore/e/0/e0ea4108d198a3d2e4e87c48063db9d2bffad6
 w
 G.idea/sonarlint/issuestore/b/0/b0bb0a26d88d16d2e82502fe47e034e248a527a2,f\1\f175c85ef48f99500714570ff900625ac8b4e2c1
 Å
-Q.idea/sonarlint/securityhotspotstore/e/e/ee8ae979775460c62ae821f0d1d03dcd4513d3b6,7\b\7b27b01dc726889a69ef3186209c24547bc16a5b
-Å
 Q.idea/sonarlint/securityhotspotstore/e/4/e446aad17961697eb3281455916a0443dffc81b2,1\0\10011cfbef06080e571bbb29f570c25cbd2cefab
 Å
 Q.idea/sonarlint/securityhotspotstore/e/9/e95e2f1cb3c597e6c7f12ec6e2de40c9a3daa2ba,6\e\6ee1d05046c415a861f7f889b704c68f06dd06ad
@@ -328,7 +326,3 @@ G.idea/sonarlint/issuestore/7/9/790068a9a25ec38a948df3f1c3c4d387c7854ed4,7\5\75
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-é
-^FSGame-Chess/chess-webonline/src/main/java/com/fsgame/chesswebonline/socket/RSocketServer.java,d\8\d893f71f7d70edfda5cbb478951d9600ad9186df
-é
-^FSGame-Chess/chess-webonline/src/main/java/com/fsgame/chesswebonline/config/RSocketConfig.java,f\5\f568cddaf3325de4164632118c63a422e56ac91b

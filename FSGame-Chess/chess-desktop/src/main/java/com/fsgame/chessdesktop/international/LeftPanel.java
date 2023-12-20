@@ -16,8 +16,8 @@ import java.io.File;
  */
 public class LeftPanel extends JPanel {
 
-
     private BaseEnum role = IntlRoleEnum.W;
+
     private String configPath = FileUtil.ls(PanelStyleUtil.PIECE_IMG)[0].getPath();
 
     private ActionListenerObserver observer;
@@ -26,7 +26,6 @@ public class LeftPanel extends JPanel {
 
     {
         gameStart.addActionListener(e -> new BoardUI(configPath, role));
-
     }
 
     public LeftPanel() {

@@ -12,7 +12,7 @@ java:S1948"'Make "board" transient or serializable.(Óÿ²ã8ÌÃÁ¿Ç1
 E
 java:S1948"#Make "g" transient or serializable.(åè‹îüÿÿÿÿ8ÌÃÁ¿Ç1
 {
-java:S1171*"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8ÍÃÁ¿Ç1
+java:S1171*"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8ĞÆìßÇ1
 ~
 java:S3457E"aNo need to call "toString()" method as formatting and string conversion is done by the Formatter.(¬Ñ†É8ùíÁ¿Ç1
 `

@@ -1,27 +1,24 @@
 package com.fsgame.chesswebonline.socket;
 
-import com.fsgame.chesscore.chessboard.WalkingRecords;
-
 /**
  * @Author: root
  * @Date: 2023/12/15 11:25
  * @Description:
  */
-public class ChessMessage implements Message<WalkingRecords>{
+public class ChessMessage<T> implements Message<T>{
 
-    private WalkingRecords walkingRecords;
+    private T msg;
 
-    public ChessMessage(WalkingRecords walkingRecords) {
-        this.walkingRecords = walkingRecords;
+    public ChessMessage(T msg) {
+        this.msg = msg;
     }
 
     @Override
-    public WalkingRecords getMessage() {
-        return walkingRecords;
+    public T getMessage() {
+        return msg;
     }
 
-    @Override
-    public void setMessage(WalkingRecords walkingRecords) {
-        this.walkingRecords = walkingRecords;
+    public void setMessage(T msg) {
+        this.msg = msg;
     }
 }
