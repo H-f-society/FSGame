@@ -13,6 +13,8 @@
         <option value="$PROJECT_DIR$/FSGame-Chess/chess-core/pom.xml" />
         <option value="$PROJECT_DIR$/FSGame-Chess/chess-desktop/pom.xml" />
         <option value="$PROJECT_DIR$/FSGame-Chess/chess-webonline/pom.xml" />
+        <option value="$PROJECT_DIR$/FSGame-YuGiOh/pom.xml" />
+        <option value="$PROJECT_DIR$/FSGame-YuGiOh/yugioh-core/pom.xml" />
       </list>
     </option>
   </component>
