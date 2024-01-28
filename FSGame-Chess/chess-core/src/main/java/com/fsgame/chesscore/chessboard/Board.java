@@ -14,10 +14,28 @@ import java.util.Map;
  */
 public interface Board {
 
+    /**
+     * 获取当前角色类别，例如黑方或白方
+     *
+     * @return 返回当前主角色类别
+     */
     BaseEnum getRoleEnum();
 
+    /**
+     * 坐标获取棋子
+     *
+     * @param coord 坐标
+     * @return 返回棋子对象
+     */
     Piece getPiece(int[] coord);
 
+    /**
+     * 坐标获取棋子
+     *
+     * @param x x坐标
+     * @param y y坐标
+     * @return 返回棋子对象
+     */
     Piece getPiece(int x, int y);
 
     void updateBoard(int[] coord, Piece piece);
