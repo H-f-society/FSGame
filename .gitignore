@@ -20,7 +20,6 @@
 /FSGame-Chess/chess-core/target/classes/com/fsgame/chesscore/chesspiece/international/Pawn.class
 /FSGame-Chess/chess-core/target/classes/com/fsgame/chesscore/chesspiece/Piece.class
 /FSGame-Chess/chess-core/target/classes/com/fsgame/chesscore/chesspiece/PieceMove.class
-/FSGame-Chess/chess-core/pom.xml
 /FSGame-Chess/chess-core/target/classes/com/fsgame/chesscore/chesspiece/international/movespecific/Promotion.class
 /FSGame-Chess/chess-core/target/classes/com/fsgame/chesscore/chesspiece/international/Queen.class
 /FSGame-Chess/chess-core/target/classes/com/fsgame/chesscore/chesspiece/international/Rook.class
@@ -104,7 +103,6 @@
 /FSGame-Chess/chess-webonline/target/classes/international/static/images/chess_02/white/Pawn.png
 /FSGame-Chess/chess-webonline/target/classes/international/static/images/chess_03/black/Pawn.png
 /FSGame-Chess/chess-webonline/target/classes/international/static/images/chess_03/white/Pawn.png
-/FSGame-Chess/chess-webonline/pom.xml
 /FSGame-Chess/chess-webonline/target/classes/international/static/images/chess_01/black/Queen.png
 /FSGame-Chess/chess-webonline/target/classes/international/static/images/chess_01/white/Queen.png
 /FSGame-Chess/chess-webonline/target/classes/international/static/images/chess_02/black/Queen.png
@@ -122,5 +120,4 @@
 /FSGame-Chess/chess-webonline/target/classes/international/static/js/WebSocketClient.js
 /FSGame-Chess/chess-webonline/target/classes/com/fsgame/chesswebonline/config/WebSocketConfig.class
 /FSGame-Chess/chess-webonline/target/classes/com/fsgame/chesswebonline/socket/WebSocketServer.class
-/.idea/
 /.idea/
